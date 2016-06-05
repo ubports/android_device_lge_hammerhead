@@ -57,25 +57,12 @@ done
 
 # Live wallpaper packages
 PRODUCT_PACKAGES := \\
-    LiveWallpapers \\
-    LiveWallpapersPicker \\
-    MagicSmokeWallpapers \\
-    VisualizationWallpapers \\
     librs_jni
 
-# Publish that we support the live wallpaper feature.
-PRODUCT_COPY_FILES := \\
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
 
 # Pick up overlay for features that depend on non-open-source files
 DEVICE_PACKAGE_OVERLAYS := vendor/$VENDOR/$DEVICE/overlay
 
-# Apps
-PRODUCT_PACKAGES += \\
-    qcrilmsgtunnel \\
-    shutdownlistener \\
-    TimeService \\
-    UpdateSetting
 
 \$(call inherit-product, vendor/$VENDOR/$DEVICE/$DEVICE-vendor-blobs.mk)
 EOF
@@ -121,45 +108,6 @@ LOCAL_PATH := \$(call my-dir)
 
 ifeq (\$(TARGET_DEVICE),hammerhead)
 
-include \$(CLEAR_VARS)
-LOCAL_MODULE := qcrilmsgtunnel
-LOCAL_MODULE_OWNER := $VENDOR
-LOCAL_SRC_FILES := app/\$(LOCAL_MODULE)/\$(LOCAL_MODULE).apk
-LOCAL_MODULE_CLASS := APPS
-LOCAL_MODULE_TAGS := optional
-LOCAL_CERTIFICATE := platform
-LOCAL_MODULE_SUFFIX := \$(COMMON_ANDROID_PACKAGE_SUFFIX)
-include \$(BUILD_PREBUILT)
-
-include \$(CLEAR_VARS)
-LOCAL_MODULE := shutdownlistener
-LOCAL_MODULE_OWNER := $VENDOR
-LOCAL_SRC_FILES := app/\$(LOCAL_MODULE)/\$(LOCAL_MODULE).apk
-LOCAL_MODULE_CLASS := APPS
-LOCAL_MODULE_TAGS := optional
-LOCAL_CERTIFICATE := platform
-LOCAL_MODULE_SUFFIX := \$(COMMON_ANDROID_PACKAGE_SUFFIX)
-include \$(BUILD_PREBUILT)
-
-include \$(CLEAR_VARS)
-LOCAL_MODULE := TimeService
-LOCAL_MODULE_OWNER := $VENDOR
-LOCAL_SRC_FILES := app/\$(LOCAL_MODULE)/\$(LOCAL_MODULE).apk
-LOCAL_MODULE_CLASS := APPS
-LOCAL_MODULE_TAGS := optional
-LOCAL_CERTIFICATE := platform
-LOCAL_MODULE_SUFFIX := \$(COMMON_ANDROID_PACKAGE_SUFFIX)
-include \$(BUILD_PREBUILT)
-
-include \$(CLEAR_VARS)
-LOCAL_MODULE := UpdateSetting
-LOCAL_MODULE_OWNER := $VENDOR
-LOCAL_SRC_FILES := app/\$(LOCAL_MODULE)/\$(LOCAL_MODULE).apk
-LOCAL_MODULE_CLASS := APPS
-LOCAL_MODULE_TAGS := optional
-LOCAL_CERTIFICATE := platform
-LOCAL_MODULE_SUFFIX := \$(COMMON_ANDROID_PACKAGE_SUFFIX)
-include \$(BUILD_PREBUILT)
 
 endif
 EOF

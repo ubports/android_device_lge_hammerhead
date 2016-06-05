@@ -20,6 +20,10 @@
 # Everything in this directory will become public
 
 
+# Ubports
+PRODUCT_COPY_FILES += \
+    device/lge/hammerhead/init_wlan.sh:system/etc/init_wlan.sh
+
 PRODUCT_COPY_FILES += \
     device/lge/hammerhead/init.hammerhead.rc:root/init.hammerhead.rc \
     device/lge/hammerhead/init.hammerhead.usb.rc:root/init.hammerhead.usb.rc \
@@ -116,7 +120,6 @@ PRODUCT_PACKAGES := \
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
-    LiveWallpapersPicker \
     librs_jni
 
 PRODUCT_PACKAGES += \
@@ -370,6 +373,8 @@ else
 PRODUCT_COPY_FILES += \
     device/lge/hammerhead/init.hammerhead.diag.rc.user:root/init.hammerhead.diag.rc
 endif
+
+$(call inherit-product, device/lge/hammerhead/mdt.mk)
 
 # setup dalvik vm configs.
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
