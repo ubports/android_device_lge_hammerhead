@@ -24,6 +24,9 @@
 PRODUCT_COPY_FILES += \
     device/lge/hammerhead/init_wlan.sh:system/etc/init_wlan.sh
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ubuntu.widi.supported=1
+
 PRODUCT_COPY_FILES += \
     device/lge/hammerhead/init.hammerhead.rc:root/init.hammerhead.rc \
     device/lge/hammerhead/init.hammerhead.usb.rc:root/init.hammerhead.usb.rc \
@@ -112,6 +115,8 @@ DEVICE_PACKAGE_OVERLAYS := \
     device/lge/hammerhead/overlay
 
 PRODUCT_PACKAGES := \
+    brcm_patchram_plus \
+    hciattach \
     libwpa_client \
     hostapd \
     dhcpcd.conf \
@@ -188,7 +193,8 @@ PRODUCT_PACKAGES += \
     gps.msm8974 \
     flp.msm8974 \
     liblbs_core \
-    flp.conf
+    flp.conf \
+    hciattach
 
 # NFC packages
 PRODUCT_PACKAGES += \
@@ -207,7 +213,8 @@ PRODUCT_PACKAGES += \
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
-    e2fsck
+    e2fsck \
+    bluetoothd
 
 # for off charging mode
 PRODUCT_PACKAGES += \
