@@ -14,4 +14,4 @@ Display | 4.95"  1080x1920 px
 Rear Camera  | 8MPx, LED Flash
 Front Camera  | 1.3MP
 
-![Nexus 5](http://drop.ndtv.com/TECH/product_database/images/1026201550700PM_635_fairphone_2.jpeg "Nexus 5")
+![Nexus 5](http://isticktoit.net/wp-content/uploads/2016/08/Nexus-5-Ubuntu-Touch-small.png "Nexus 5")
