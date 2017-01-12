@@ -25,8 +25,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 PRODUCT_NAME := full_hammerhead
 PRODUCT_DEVICE := hammerhead
-PRODUCT_BRAND := Ubports
-PRODUCT_MODEL := Hammerhead on Ubports 
+PRODUCT_BRAND := Google
+PRODUCT_MODEL := Nexus 5
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
