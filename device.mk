@@ -19,11 +19,6 @@
 #
 # Everything in this directory will become public
 
-
-# Ubports
-PRODUCT_COPY_FILES += \
-    device/lge/hammerhead/init_wlan.sh:system/etc/init_wlan.sh
-
 PRODUCT_PROPERTY_OVERRIDES += \
     ubuntu.widi.supported=1
 

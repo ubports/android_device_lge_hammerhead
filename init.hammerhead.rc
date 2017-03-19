@@ -151,6 +151,7 @@ on post-fs-data
 
     # wifi
     chown wifi system /persist/wifi
+    insmod /system/lib/modules/bcmdhd.ko
 
     #  bluetooth
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
@@ -492,11 +493,6 @@ service vss_init /vendor/bin/vss_init
     user root
     group root
     disabled
-
-service init_wlan /system/bin/sh /system/etc/init_wlan.sh
-    class main
-    user root
-    oneshot
 
 service time_daemon /system/bin/time_daemon
     class late_start
