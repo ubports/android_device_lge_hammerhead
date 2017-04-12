@@ -388,6 +388,9 @@ PRODUCT_COPY_FILES += \
     device/lge/hammerhead/ubuntu/ubuntu-location-service.conf:system/ubuntu/etc/init/ubuntu-location-service.conf \
     device/lge/hammerhead/ubuntu/display.conf:system/ubuntu/etc/ubuntu-touch-session.d/android.conf
 
+#This keeps time correct across reboots
+PRODUCT_PACKAGES += timekeep
+
 # setup dalvik vm configs.
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
