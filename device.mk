@@ -386,7 +386,9 @@ PRODUCT_COPY_FILES += \
     device/lge/hammerhead/ubuntu/bluetooth-touch-hammerhead.conf:system/ubuntu/etc/init/bluetooth-touch-hammerhead.conf \
     device/lge/hammerhead/ubuntu/touch-symlinks.conf:system/ubuntu/etc/init/touch-symlinks.conf \
     device/lge/hammerhead/ubuntu/ubuntu-location-service.conf:system/ubuntu/etc/init/ubuntu-location-service.conf \
-    device/lge/hammerhead/ubuntu/display.conf:system/ubuntu/etc/ubuntu-touch-session.d/android.conf
+    device/lge/hammerhead/ubuntu/display.conf:system/ubuntu/etc/ubuntu-touch-session.d/android.conf \
+    device/lge/hammerhead/ubuntu/display.conf:system/ubuntu/etc/ubuntu-touch-session.d/hammerhead.conf \
+    device/lge/hammerhead/ubuntu/ofono.override:system/ubuntu/etc/init/ofono.override
 
 #This keeps time correct across reboots
 PRODUCT_PACKAGES += timekeep
