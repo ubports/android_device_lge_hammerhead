@@ -134,10 +134,11 @@ on boot
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
 
     # leds
-    chown system system /sys/class/leds/red/on_off_ms
-    chown system system /sys/class/leds/green/on_off_ms
-    chown system system /sys/class/leds/blue/on_off_ms
-    chown system system /sys/class/leds/red/rgb_start
+    chmod 664 /sys/class/leds/red/on_off_ms
+    chmod 664 /sys/class/leds/green/on_off_ms
+    chmod 664 /sys/class/leds/blue/on_off_ms
+    chmod 664 /sys/class/leds/red/rgb_start
+    chmod 664 /sys/class/leds/led\:flash_torch/brightness
     chmod 664 /sys/class/leds/lcd-backlight/brightness
 
 on post-fs-data
