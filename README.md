@@ -14,4 +14,4 @@ Display | 4.95"  1080x1920 px
 Rear Camera  | 8MPx, LED Flash
 Front Camera  | 1.3MP
 
-![Nexus 5](http://isticktoit.net/wp-content/uploads/2016/08/Nexus-5-Ubuntu-Touch-small.png "Nexus 5")
+![Nexus 5](https://github.com/rubencarneiro/devices_images/blob/master/nexus5ubports.png "Nexus 5")
