@@ -465,11 +465,6 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input
-    
-service timekeep /system/bin/timekeep
-    class late_start
-    user root
-    group root
 
 service bdAddrLoader /system/bin/bdAddrLoader -f /persist/bluetooth/.bdaddr -h -x
     class main
@@ -500,3 +495,7 @@ service vss_init /vendor/bin/vss_init
     group root
     disabled
 
+service time_daemon /system/bin/time_daemon
+    class late_start
+    user root
+    group root
