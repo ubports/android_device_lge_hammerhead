@@ -494,6 +494,3 @@ service vss_init /vendor/bin/vss_init
     user root
     group root
     disabled
-
-
-
