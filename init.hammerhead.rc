@@ -141,6 +141,10 @@ on boot
     chmod 0666 /sys/class/leds/led\:flash_torch/brightness
     chmod 0666 /sys/class/leds/lcd-backlight/brightness
 
+    #Timekeep dir // this is a temporary fix to hammerhead
+    mkdir /data/time
+    chmod 777 /data/time
+
 on post-fs-data
     write /sys/kernel/boot_adsp/boot 1
 
