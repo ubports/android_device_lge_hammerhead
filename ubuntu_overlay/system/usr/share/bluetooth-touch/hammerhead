@@ -1,0 +1,23 @@
+#!/bin/sh -e
+#
+# Bluetooth initialization on hammerhead
+#
+# Bluetooth initialization job, specifically for the Nexus 5 device (hammerhead),
+# uses brcm-patchram-plus to patch firmware, set line discipline and write
+# the bluetooth address for the device.
+#
+
+for i in 1 2 3 4 5; do
+    sleep 3
+    if [ -e /sys/class/rfkill/rfkill0/state ]; then
+        break
+    fi
+done
+
+chmod 0660 /sys/class/rfkill/rfkill0/state
+chmod 0660 /sys/class/rfkill/rfkill0/type
+chgrp dialout /sys/class/rfkill/rfkill0/state
+chgrp dialout /sys/class/rfkill/rfkill0/type
+rfkill unblock bluetooth
+
+/usr/bin/hciattach -f /system/vendor/firmware ttyHS99 bcm43xx 4000000 flow sleep /data/property/persist.service.bdroid.bdaddr &
