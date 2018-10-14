@@ -109,6 +109,10 @@ PRODUCT_CHARACTERISTICS := nosdcard
 DEVICE_PACKAGE_OVERLAYS := \
     device/lge/hammerhead/overlay
 
+# Charger
+PRODUCT_PACKAGES += \
+		charger_res_images
+
 PRODUCT_PACKAGES := \
     brcm_patchram_plus \
     hciattach \
