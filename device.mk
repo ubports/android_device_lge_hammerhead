@@ -26,7 +26,7 @@ PRODUCT_COPY_FILES += \
     device/lge/hammerhead/init.hammerhead.rc:root/init.hammerhead.rc \
     device/lge/hammerhead/init.hammerhead.usb.rc:root/init.hammerhead.usb.rc \
     device/lge/hammerhead/fstab.hammerhead:root/fstab.hammerhead \
-    device/lge/hammerhead/ueventd.hammerhead.rc:root/ueventd.hammerhead.rc
+    device/lge/hammerhead/ueventd.hammerhead.rc:root/ueventd.hammerhead.rc \
 
 # Input device files for hammerhead
 PRODUCT_COPY_FILES += \
@@ -108,10 +108,6 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 DEVICE_PACKAGE_OVERLAYS := \
     device/lge/hammerhead/overlay
-
-# Charger
-PRODUCT_PACKAGES += \
-		charger_res_images
 
 PRODUCT_PACKAGES := \
     brcm_patchram_plus \
@@ -200,6 +196,9 @@ PRODUCT_PACKAGES += \
     nfc_nci.bcm2079x.default \
     NfcNci \
     Tag
+# Charger
+PRODUCT_PACKAGES += \
+    charger_res_images
 
 PRODUCT_PACKAGES += \
     libion
@@ -391,7 +390,18 @@ PRODUCT_COPY_FILES += \
     device/lge/hammerhead/ubuntu/ubuntu-location-service.conf:system/ubuntu/etc/init/ubuntu-location-service.conf \
     device/lge/hammerhead/ubuntu/display.conf:system/ubuntu/etc/ubuntu-touch-session.d/android.conf \
     device/lge/hammerhead/ubuntu/display.conf:system/ubuntu/etc/ubuntu-touch-session.d/hammerhead.conf \
-    device/lge/hammerhead/ubuntu/ofono.override:system/ubuntu/etc/init/ofono.override
+    device/lge/hammerhead/ubuntu/ofono.override:system/ubuntu/etc/init/ofono.override \
+    device/lge/hammerhead/ubuntu_overlay/system/etc/init/bluetooth-touch-hammerhead.conf:system/ubuntu-overlay/system/etc/init/bluetooth-touch-hammerhead.conf \
+    device/lge/hammerhead/ubuntu_overlay/system/etc/init/ofono.override:system/ubuntu-overlay/system/etc/init/ofono.override \
+    device/lge/hammerhead/ubuntu_overlay/system/etc/wifi/bcmdhd.cal:system/ubuntu-overlay/system/etc/wifi/bcmdhd.cal \
+    #device/lge/hammerhead/ubuntu_overlay/system/etc/acdbdata:system/ubuntu-overlay/system/etc/acdbdata \
+    #device/lge/hammerhead/ubuntu_overlay/system/etc/mixer_paths.xml:system/ubuntu-overlay/system/etc/mixer_paths.xml \
+    device/lge/hammerhead/ubuntu_overlay/system/usr/bin/hciattach:system/ubuntu-overlay/system/usr/bin/hciattach \
+    device/lge/hammerhead/ubuntu_overlay/system/usr/share/bluetooth-touch/hammerhead:system/ubuntu-overlay/system/usr/share/bluetooth-touch/hammerhead
+
+# Charger Images
+PRODUCT_COPY_FILES += \
+    device/lge/hammerhead/charger/res/images/battery_scale.png:root/res/images/charger/battery_scale.png
 
 #This keeps time correct across reboots
 PRODUCT_PACKAGES += timekeep
