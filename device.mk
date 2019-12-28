@@ -21,6 +21,9 @@
 
 LOCAL_PATH := device/lge/hammerhead
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ubuntu.widi.supported=1
+
 PRODUCT_COPY_FILES += \
     device/lge/hammerhead/init.hammerhead.rc:root/init.hammerhead.rc \
     device/lge/hammerhead/init.hammerhead.usb.rc:root/init.hammerhead.usb.rc \
