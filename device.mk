@@ -407,6 +407,17 @@ PRODUCT_COPY_FILES += \
     hardware/broadcom/wlan/bcmdhd/config/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     hardware/broadcom/wlan/bcmdhd/config/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 
+# Ubuntu Overlay Files
+PRODUCT_COPY_FILES += \
+    device/lge/hammerhead/ubuntu/70-hammerhead.rules:system/ubuntu/lib/udev/rules.d/70-android.rules \
+    device/lge/hammerhead/ubuntu/android-tools-adb.conf:system/ubuntu/etc/init/android-tools-adb.conf \
+    device/lge/hammerhead/ubuntu/bluetooth-touch-hammerhead.conf:system/ubuntu/etc/init/bluetooth-touch-hammerhead.conf \
+    device/lge/hammerhead/ubuntu/touch-symlinks.conf:system/ubuntu/etc/init/touch-symlinks.conf \
+    device/lge/hammerhead/ubuntu/ubuntu-location-service.conf:system/ubuntu/etc/init/ubuntu-location-service.conf \
+    device/lge/hammerhead/ubuntu/display.conf:system/ubuntu/etc/ubuntu-touch-session.d/android.conf \
+    device/lge/hammerhead/ubuntu/display.conf:system/ubuntu/etc/ubuntu-touch-session.d/hammerhead.conf \
+    device/lge/hammerhead/ubuntu/ofono.override:system/ubuntu/etc/init/ofono.override
+
 else
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4339/device-bcm.mk)
 endif
