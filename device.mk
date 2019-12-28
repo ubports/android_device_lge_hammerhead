@@ -127,6 +127,8 @@ DEVICE_PACKAGE_OVERLAYS := \
     device/lge/hammerhead/overlay
 
 PRODUCT_PACKAGES := \
+    brcm_patchram_plus \
+    hciattach \
     libwpa_client \
     hostapd \
     dhcpcd.conf \
