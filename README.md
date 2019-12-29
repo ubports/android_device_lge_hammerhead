@@ -19,5 +19,5 @@ Front Camera  | 1.3MP
 Halium   | Status
 -------:|:-------------------------
 
-[X] Boot
-[X] GUI Starts
+- [X] Boot
+- [X] GUI Starts
