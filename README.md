@@ -16,7 +16,7 @@ Front Camera  | 1.3MP
 
 ![Nexus 5](https://github.com/rubencarneiro/devices_images/blob/master/nexus5ubports.png "Nexus 5")
 
-Halium   | Status
+Halium 7.1.1   | Status
 -------:|:-------------------------
 
 - [X] Boot
