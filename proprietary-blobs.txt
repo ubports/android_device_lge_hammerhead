@@ -51,7 +51,6 @@ etc/permissions/serviceitems.xml
 etc/qcril.db
 etc/sensor_def_hh.conf
 lib/hw/flp.msm8974.so
-lib/hw/gps.msm8974.so
 lib/libadsprpc.so
 lib/libchromatix_imx179_common.so
 lib/libchromatix_imx179_default_video.so
@@ -64,10 +63,8 @@ lib/libchromatix_mt9m114b_snapshot.so
 lib/libdrmdiag.so
 lib/libdrmfs.so
 lib/libdrmtime.so
-lib/libgps.utils.so
 lib/libI420colorconvert.so
-lib/libloc_core.so
-lib/libloc_eng.so
+
 lib/libmm-abl.so
 lib/libmmcamera_hdr_lib.so
 lib/libmmcamera_image_stab.so
@@ -102,7 +99,6 @@ vendor/firmware/adsp.b12
 vendor/firmware/adsp.mdt
 vendor/firmware/bcm2079x-b5_firmware.ncd
 vendor/firmware/bcm2079x-b5_pre_firmware.ncd
-vendor/firmware/bcm4335c0.hcd
 vendor/firmware/bu24205_LGIT_VER_2_DATA1.bin
 vendor/firmware/bu24205_LGIT_VER_2_DATA2.bin
 vendor/firmware/bu24205_LGIT_VER_2_DATA3.bin
@@ -169,6 +165,7 @@ vendor/lib/libidl.so
 vendor/lib/libizat_core.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegehw.so
+vendor/lib/libfrsdk.so
 vendor/lib/liblbs_core.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/libloc_api_v02.so
