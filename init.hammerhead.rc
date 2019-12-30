@@ -14,11 +14,6 @@
 # limitations under the License.
 #
 
-import init.hammerhead.usb.rc
-import init.hammerhead_svelte.rc
-import init.hammerhead.diag.rc
-import init.hammerhead_fp.rc
-
 on early-init
     mount debugfs debugfs /sys/kernel/debug
     chown system system /sys/kernel/debug/kgsl/proc
