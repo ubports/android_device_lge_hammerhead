@@ -156,6 +156,8 @@ const QCamera3HardwareInterface::QCameraMap QCamera3HardwareInterface::FOCUS_CAL
 };
 
 const int32_t available_thumbnail_sizes[] = {0, 0,
+                                             128, 72,
+                                             128, 96,
                                              176, 144,
                                              320, 240,
                                              432, 288,
