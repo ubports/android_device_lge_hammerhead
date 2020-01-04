@@ -102,18 +102,23 @@ PRODUCT_COPY_FILES += \
 
 # Ubuntu Touch
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/ubuntu/apparmor.d/local/usr.bin.media-hub-server:system/halium/etc/apparmor.d/local/usr.bin.media-hub-server \
-    $(LOCAL_PATH)/ubuntu/apparmor.d/abstractions/base:system/halium/etc/apparmor.d/abstractions/base \
     $(LOCAL_PATH)/ubuntu/ofono.override:system/halium/etc/init/ofono.override \
     $(LOCAL_PATH)/ubuntu/70-hammerhead.rules:system/halium/lib/udev/rules.d/70-android.rules \
-    $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/android.conf
-#    $(LOCAL_PATH)/ubuntu/timekeeper.conf:system/halium/etc/init/timekeeper.conf \
-#    $(LOCAL_PATH)/ubuntu/unblock_wakelock.sh:system/etc/unblock_wakelock.sh \
-#    $(LOCAL_PATH)/ubuntu/hci_qcomm_init:system/bin/hci_qcomm_init \
-#    $(LOCAL_PATH)/ubuntu/touch.pa:system/halium/etc/pulse/touch.pa \
-#    $(LOCAL_PATH)/ubuntu/init_hcismd_up.sh:system/etc/init_hcismd_up.sh \
-#    $(LOCAL_PATH)/audio/mixer_paths.xml:system/halium/etc/mixer_paths.xml \
-#    $(LOCAL_PATH)/ubuntu/config.xml:system/halium/usr/share/repowerd/device-configs/config-default.xml
+    $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
+    $(LOCAL_PATH)/ubuntu/timekeeper.conf:system/halium/etc/init/timekeeper.conf \
+    $(LOCAL_PATH)/ubuntu/init_wlan_bt.sh:system/etc/init_wlan_bt.sh \
+    $(LOCAL_PATH)/ubuntu/config-default.xml:system/halium/usr/share/repowerd/device-configs/config-hammerhead.xml
+#    $(LOCAL_PATH)/audio/mixer_paths.xml:system/halium/etc/mixer_paths.xml
+
+#Ubuntu Touch: USB port handling
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/ubuntu/usb/setupusb:system/halium/usr/share/usbinit/setupusb \
+#    $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf \
+#    $(LOCAL_PATH)/ubuntu/usb/mtp-server.conf:system/halium/usr/share/upstart/sessions/mtp-server.conf
+
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ubuntu.widi.supported=1
 
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi

@@ -15,7 +15,6 @@
 #
 
 import init.hammerhead.usb.rc
-import init.hammerhead_svelte.rc
 import init.hammerhead.diag.rc
 import init.hammerhead_fp.rc
 
@@ -138,6 +137,7 @@ on post-fs-data
 
     # wifi
     chown wifi system /persist/wifi
+    insmod /system/lib/modules/bcmdhd.ko
 
     #  bluetooth
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
@@ -390,3 +390,10 @@ service time_daemon /system/bin/time_daemon
     class late_start
     user root
     group root
+
+service init_wlan_bt /system/bin/sh /system/etc/init_wlan_bt.sh
+    class main
+    user root
+    group root
+    oneshot
+
