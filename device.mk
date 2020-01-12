@@ -116,6 +116,9 @@ PRODUCT_COPY_FILES += \
 #    $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf \
 #    $(LOCAL_PATH)/ubuntu/usb/mtp-server.conf:system/halium/usr/share/upstart/sessions/mtp-server.conf
 
+# for off charging mode
+PRODUCT_PACKAGES += \
+    charger_res_images
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ubuntu.widi.supported=1

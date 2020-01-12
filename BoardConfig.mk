@@ -109,6 +109,8 @@ BOARD_HAS_FINGERPRINT_FPC := true
 endif
 
 BOARD_CHARGER_ENABLE_SUSPEND := true
+# Ubuntu
+BOARD_HEALTHD_CUSTOM_CHARGER_RES := device/lge/hammerhead/charger/images
 
 TARGET_RECOVERY_FSTAB = device/lge/hammerhead/fstab.hammerhead
 
