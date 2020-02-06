@@ -108,7 +108,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/init_wlan_bt.sh:system/etc/init_wlan_bt.sh \
     $(LOCAL_PATH)/ubuntu/config-default.xml:system/halium/usr/share/repowerd/device-configs/config-hammerhead.xml \
     $(LOCAL_PATH)/ubuntu/bluetooth/hciattach:system/bin/hciattach \
-    $(LOCAL_PATH)/ubuntu/bluetooth/bluetooth-touch-hammerhead.conf:system/halium/etc/init/bluetooth-touch-hammerhead.conf
+    $(LOCAL_PATH)/ubuntu/bluetooth/bluetooth-touch-android.conf:system/halium/etc/init/bluetooth-touch-android.conf
 #    $(LOCAL_PATH)/audio/mixer_paths.xml:system/halium/etc/mixer_paths.xml
 
 # Additional Android stuff for Ubuntu Touch
