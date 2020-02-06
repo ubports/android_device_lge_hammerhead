@@ -397,3 +397,9 @@ service init_wlan_bt /system/bin/sh /system/etc/init_wlan_bt.sh
     group root
     oneshot
 
+service minimedia /system/bin/minimediaservice
+    class main
+    user media
+    group audio camera
+    ioprio rt 4
+
