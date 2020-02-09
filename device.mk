@@ -111,9 +111,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/bluetooth/bluetooth-touch-android.conf:system/halium/etc/init/bluetooth-touch-android.conf
 #    $(LOCAL_PATH)/audio/mixer_paths.xml:system/halium/etc/mixer_paths.xml
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.t-o.quirk.forcesink=sink.primary \
+    ro.t-o.quirk.forcesource=source.primary
+
 # Additional Android stuff for Ubuntu Touch
-PRODUCT_PACKAGES += \
-    brcm_patchram_plus \
+PRODUCT_PACKAGES := \
     libmedia_compat \
     minimediaservice
 
@@ -138,7 +141,7 @@ PRODUCT_CHARACTERISTICS := nosdcard
 DEVICE_PACKAGE_OVERLAYS := \
     device/lge/hammerhead/overlay
 
-PRODUCT_PACKAGES := \
+PRODUCT_PACKAGES += \
     libwpa_client \
     hostapd \
     dhcpcd.conf \
