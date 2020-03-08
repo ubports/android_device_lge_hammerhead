@@ -391,12 +391,6 @@ service time_daemon /system/bin/time_daemon
     user root
     group root
 
-service init_wlan_bt /system/bin/sh /system/etc/init_wlan_bt.sh
-    class main
-    user root
-    group root
-    oneshot
-
 service minimedia /system/bin/minimediaservice
     class main
     user media
