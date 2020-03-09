@@ -20,4 +20,4 @@ chgrp dialout /sys/class/rfkill/rfkill0/state
 chgrp dialout /sys/class/rfkill/rfkill0/type
 rfkill unblock bluetooth
 
-/usr/bin/hciattach -f /system/vendor/firmware ttyHS99 bcm43xx 4000000 flow sleep /data/property/persist.service.bdroid.bdaddr &
+/system/bin/hciattach -f /system/vendor/firmware ttyHS99 bcm43xx 4000000 flow sleep /data/property/persist.service.bdroid.bdaddr &
