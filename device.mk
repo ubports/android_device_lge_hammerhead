@@ -392,7 +392,7 @@ PRODUCT_COPY_FILES += \
     device/lge/hammerhead/ubuntu/display.conf:system/ubuntu/etc/ubuntu-touch-session.d/android.conf \
     device/lge/hammerhead/ubuntu/display.conf:system/ubuntu/etc/ubuntu-touch-session.d/hammerhead.conf \
     device/lge/hammerhead/ubuntu/ofono.override:system/ubuntu/etc/init/ofono.override \
-    device/lge/hammerhead/ubuntu_overlay/system/usr/bin/hciattach system/bin/hciattach
+    device/lge/hammerhead/ubuntu/hciattach system/bin/hciattach
 
 #This keeps time correct across reboots
 PRODUCT_PACKAGES += timekeep
