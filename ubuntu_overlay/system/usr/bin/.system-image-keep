@@ -1,0 +1,3 @@
+This file is placed here so system-image does not delete this folder (/usr/bin)
+on a delta upgrade. It can be found in the repository at
+https://github.com/ubports/android_device_lge_hammerhead
