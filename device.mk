@@ -102,13 +102,20 @@ PRODUCT_COPY_FILES += \
 
 # Ubuntu Touch
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/ubuntu/touch-symlinks.conf:system/halium/etc/init/touch-symlinks.conf \
     $(LOCAL_PATH)/ubuntu/ofono.override:system/halium/etc/init/ofono.override \
     $(LOCAL_PATH)/ubuntu/70-hammerhead.rules:system/halium/lib/udev/rules.d/70-android.rules \
+    $(LOCAL_PATH)/ubuntu/70-hammerhead.rules:system/halium/usr/lib/lxc-android-config/70-android.rules \
+    $(LOCAL_PATH)/ubuntu/70-hammerhead.rules::system/halium/etc/udev/rules.d/70-android.rules \
     $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
+    $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/hammerhead.conf \
     $(LOCAL_PATH)/ubuntu/config-default.xml:system/halium/usr/share/repowerd/device-configs/config-hammerhead.xml \
+    $(LOCAL_PATH)/ubuntu/config-default.xml:system/halium/usr/share/repowerd/device-configs/config-default.xml \
+    $(LOCAL_PATH)/ubuntu/apparmor.d/abstractions/base:system/halium/etc/apparmor.d/abstractions/base \
+    $(LOCAL_PATH)/ubuntu/apparmor.d/local/usr.bin.media-hub-server:system/halium/etc/apparmor.d/local/usr.bin.media-hub-server \
     $(LOCAL_PATH)/ubuntu/bluetooth/hciattach:system/bin/hciattach \
+    $(LOCAL_PATH)/ubuntu/device-hacks.conf:system/halium/etc/init/device-hacks.conf \
     $(LOCAL_PATH)/ubuntu/bluetooth/bluetooth-touch-android.conf:system/halium/etc/init/bluetooth-touch-android.conf
-#    $(LOCAL_PATH)/audio/mixer_paths.xml:system/halium/etc/mixer_paths.xml
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.t-o.quirk.forcesink=sink.primary \
@@ -121,9 +128,9 @@ PRODUCT_PACKAGES := \
 
 #Ubuntu Touch: USB port handling
 #PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/ubuntu/usb/setupusb:system/halium/usr/share/usbinit/setupusb \
-#    $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf \
-#    $(LOCAL_PATH)/ubuntu/usb/mtp-server.conf:system/halium/usr/share/upstart/sessions/mtp-server.conf
+#   $(LOCAL_PATH)/ubuntu/usb/setupusb:system/halium/usr/share/usbinit/setupusb \
+#   $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf \
+#   $(LOCAL_PATH)/ubuntu/usb/mtp-server.conf:system/halium/usr/share/upstart/sessions/mtp-server.conf
 
 # for off charging mode
 PRODUCT_PACKAGES += \
@@ -141,6 +148,8 @@ DEVICE_PACKAGE_OVERLAYS := \
     device/lge/hammerhead/overlay
 
 PRODUCT_PACKAGES += \
+    brcm_patchram_plus \
+    hciattach \
     libwpa_client \
     hostapd \
     dhcpcd.conf \
@@ -149,7 +158,6 @@ PRODUCT_PACKAGES += \
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
-    LiveWallpapersPicker \
     librs_jni
 
 PRODUCT_PACKAGES += \
@@ -170,11 +178,16 @@ PRODUCT_PACKAGES += \
     libOmxVenc
 
 PRODUCT_PACKAGES += \
+    audiod \
     audio.primary.msm8974 \
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
     libaudio-resampler \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
+    libvolumelistener \
     tinymix
 
 # Audio effects
@@ -187,7 +200,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/lge/hammerhead/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
-
+# adb
+PRODUCT_PACKAGES += \
+    libadb
+    
 # Camera
 PRODUCT_PACKAGES += \
     libqomx_core \
@@ -198,15 +214,34 @@ PRODUCT_PACKAGES += \
     mm-qcamera-app \
     Snap
 
+# Ubuntu
+PRODUCT_PACKAGES += \
+    libubuntu_application_api \
+    direct_ubuntu_application_sensors_c_api_for_hybris_test \
+    direct_ubuntu_application_sensors_for_hybris_test \
+    direct_ubuntu_application_gps_c_api_for_hybris_test \
+    libcamera_compat_layer \
+    libmedia_compat_layer \
+    libdroidmedia \
+    libminisf \
+    libgui \
+    libui \
+    libutils \
+    miniafservice \
+    minimediaservice \
+    minisfservice \
+    libcameraservice\
+    libui_compat_layer \
+    libsf_compat_layer \
+    libaudioflingerglue \
+    camera_service
+
+# keystore
 PRODUCT_PACKAGES += \
     keystore.msm8974
 
 PRODUCT_PACKAGES += \
     power.msm8974
-
-# Gello
-PRODUCT_PACKAGES += \
-    Gello
 
 # GPS configuration
 PRODUCT_COPY_FILES += \
@@ -233,8 +268,16 @@ PRODUCT_PACKAGES += \
     NfcNci \
     Tag
 
+# halium-boot
+PRODUCT_PACKAGES += \
+    halium-boot
+
 PRODUCT_PACKAGES += \
     libion
+
+# QMI
+PRODUCT_PACKAGES += \
+    libjson
 
 PRODUCT_PACKAGES += \
     lights.hammerhead
@@ -386,6 +429,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     media.stagefright.legacyencoder=true \
     media.stagefright.less-secure=true
 
+# set default USB configuration
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp
+
 # Input resampling configuration
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.input.noresample=1
@@ -393,6 +440,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Reduce client buffer size for fast audio output tracks
 PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=1
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.isUsbOtgEnabled=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-swap=false
@@ -425,5 +475,4 @@ endif
 
 # setup dalvik vm configs.
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
-
 $(call inherit-product-if-exists, vendor/qcom/gpu/msm8x74/msm8x74-gpu-vendor.mk)
