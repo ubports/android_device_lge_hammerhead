@@ -121,16 +121,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.t-o.quirk.forcesink=sink.primary \
     ro.t-o.quirk.forcesource=source.primary
 
-# Additional Android stuff for Ubuntu Touch
-PRODUCT_PACKAGES := \
-    libmedia_compat \
-    minimediaservice
 
 #Ubuntu Touch: USB port handling
-#PRODUCT_COPY_FILES += \
-#   $(LOCAL_PATH)/ubuntu/usb/setupusb:system/halium/usr/share/usbinit/setupusb \
-#   $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf \
-#   $(LOCAL_PATH)/ubuntu/usb/mtp-server.conf:system/halium/usr/share/upstart/sessions/mtp-server.conf
+PRODUCT_COPY_FILES += \
+   $(LOCAL_PATH)/ubuntu/usb/setupusb:system/halium/usr/share/usbinit/setupusb \
+   $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf \
+   $(LOCAL_PATH)/ubuntu/usb/mtp-server.conf:system/halium/usr/share/upstart/sessions/mtp-server.conf
 
 # for off charging mode
 PRODUCT_PACKAGES += \
@@ -222,6 +218,7 @@ PRODUCT_PACKAGES += \
     direct_ubuntu_application_gps_c_api_for_hybris_test \
     libcamera_compat_layer \
     libmedia_compat_layer \
+    libmedia_compat \
     libdroidmedia \
     libminisf \
     libgui \
