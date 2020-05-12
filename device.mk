@@ -154,7 +154,8 @@ PRODUCT_PACKAGES += \
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
-    librs_jni
+    librs_jni \
+    libjni_livedisplay
 
 PRODUCT_PACKAGES += \
     gralloc.msm8974 \
@@ -171,8 +172,10 @@ PRODUCT_PACKAGES += \
     libmm-omxcore \
     libOmxVdec \
     libOmxVdecHevc \
-    libOmxVenc
-
+    libOmxVenc \
+    libvpx
+    
+# Audio
 PRODUCT_PACKAGES += \
     audiod \
     audio.primary.msm8974 \
@@ -183,23 +186,13 @@ PRODUCT_PACKAGES += \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
+    libqcomvoiceprocessingdescriptors \
     libvolumelistener \
     tinymix
-
-# Audio effects
-PRODUCT_PACKAGES += \
-    libqcomvisualizer \
-    libqcomvoiceprocessing \
-    libqcomvoiceprocessingdescriptors \
-    libqcompostprocbundle
 
 PRODUCT_COPY_FILES += \
     device/lge/hammerhead/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
-# adb
-PRODUCT_PACKAGES += \
-    libadb
-    
 # Camera
 PRODUCT_PACKAGES += \
     libqomx_core \
@@ -438,6 +431,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=1
 
+# USB OTG
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.isUsbOtgEnabled=1
 
