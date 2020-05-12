@@ -104,10 +104,6 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_KERNEL_CONFIG := cyanogenmod_hammerhead_defconfig
 TARGET_KERNEL_SOURCE := kernel/lge/hammerhead
 
-ifneq ($(filter hammerhead_fp aosp_hammerhead_fp,$(TARGET_PRODUCT)),)
-BOARD_HAS_FINGERPRINT_FPC := true
-endif
-
 BOARD_CHARGER_ENABLE_SUSPEND := true
 # Ubuntu
 BOARD_HEALTHD_CUSTOM_CHARGER_RES := device/lge/hammerhead/charger/images
@@ -120,16 +116,11 @@ BOARD_HAL_STATIC_LIBRARIES := libdumpstate.hammerhead
 
 BOARD_SEPOLICY_DIRS += device/lge/hammerhead/sepolicy
 
-ifneq ($(filter hammerhead_fp aosp_hammerhead_fp,$(TARGET_PRODUCT)),)
-BOARD_SEPOLICY_DIRS += \
-       device/lge/hammerhead/sepolicy-hammerhead_fp
-
 # The list below is order dependent
 BOARD_SEPOLICY_UNION += \
        device.te \
        system_server.te \
        file_contexts
-endif
 
 HAVE_ADRENO_SOURCE:= false
 
@@ -139,11 +130,13 @@ TARGET_HAS_HH_VSYNC_ISSUE := true
 
 TARGET_TOUCHBOOST_FREQUENCY:= 1200
 
-USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY:= true
-USE_DEVICE_SPECIFIC_CAMERA:= true
+USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY := true
+USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS:= true
+
+HYBRIS_MEDIA_32_BIT_ONLY := true
 
 ifeq ($(USE_SVELTE_KERNEL),true)
 MALLOC_SVELTE := true
