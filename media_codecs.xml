@@ -123,5 +123,5 @@
             <Limit name="concurrent-instances" max="13" />
         </MediaCodec>
     </Decoders>
-    <Include href="media_codecs_ffmpeg.xml" />
+    <Include href="media_codecs_google_video.xml" />
 </MediaCodecs>
