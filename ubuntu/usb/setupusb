@@ -28,10 +28,6 @@ setup_mtp() {
     setprop sys.usb.state mtp
 }
 
-setup_adb() {
-    setprop sys.usb.config adb
-}
-
 setup_mtp_adb() {
     write $ANDROID_USB/enable        0
     write $ANDROID_USB/enable        1
@@ -82,8 +78,6 @@ if [ "$1" == "rndis" ]; then
     setup_rndis
 elif [ "$1" == "mtp" ]; then
     setup_mtp
-elif [ "$1" == "adb" ]; then
-    setup_adb
 elif [ "$1" == "mtp_adb" ]; then
     setup_mtp_adb
 elif [ "$1" == "reset" ]; then

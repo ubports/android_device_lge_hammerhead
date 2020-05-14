@@ -111,7 +111,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/hammerhead.conf \
     $(LOCAL_PATH)/ubuntu/config-default.xml:system/halium/usr/share/repowerd/device-configs/config-hammerhead.xml \
     $(LOCAL_PATH)/ubuntu/config-default.xml:system/halium/usr/share/repowerd/device-configs/config-default.xml \
-    $(LOCAL_PATH)/ubuntu/apparmor.d/abstractions/base:system/halium/etc/apparmor.d/abstractions/base \
     $(LOCAL_PATH)/ubuntu/apparmor.d/local/usr.bin.media-hub-server:system/halium/etc/apparmor.d/local/usr.bin.media-hub-server \
     $(LOCAL_PATH)/ubuntu/bluetooth/hciattach:system/bin/hciattach \
     $(LOCAL_PATH)/ubuntu/device-hacks.conf:system/halium/etc/init/device-hacks.conf \
@@ -172,8 +171,7 @@ PRODUCT_PACKAGES += \
     libmm-omxcore \
     libOmxVdec \
     libOmxVdecHevc \
-    libOmxVenc \
-    libvpx
+    libOmxVenc
     
 # Audio
 PRODUCT_PACKAGES += \
@@ -204,27 +202,28 @@ PRODUCT_PACKAGES += \
     Snap
 
 # Ubuntu
-PRODUCT_PACKAGES += \
-    libubuntu_application_api \
-    direct_ubuntu_application_sensors_c_api_for_hybris_test \
-    direct_ubuntu_application_sensors_for_hybris_test \
-    direct_ubuntu_application_gps_c_api_for_hybris_test \
-    libcamera_compat_layer \
-    libmedia_compat_layer \
-    libmedia_compat \
-    libdroidmedia \
-    libminisf \
-    libgui \
-    libui \
-    libutils \
-    miniafservice \
-    minimediaservice \
-    minisfservice \
-    libcameraservice\
-    libui_compat_layer \
-    libsf_compat_layer \
-    libaudioflingerglue \
-    camera_service
+#PRODUCT_PACKAGES += \
+#    libubuntu_application_api \
+#    direct_ubuntu_application_sensors_c_api_for_hybris_test \
+#    direct_ubuntu_application_sensors_for_hybris_test \
+#    direct_ubuntu_application_gps_c_api_for_hybris_test \
+#    direct_camera_test \
+#    direct_sf_test \
+#    direct_media_tdirect_sf_testest \
+#    libcamera_compat_layer \
+#    libmedia_compat_layer \
+#    libis_compat_layer \
+#    libmedia_compat \
+#    libgui \
+#    libui \
+#    libutils \
+#    miniafservice \
+#    minimediaservice \
+#    libcameraservice\
+#    libui_compat_layer \
+#    libsf_compat_layer \
+#    libaudioflingerglue
+
 
 # keystore
 PRODUCT_PACKAGES += \
@@ -265,10 +264,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libion
 
-# QMI
-PRODUCT_PACKAGES += \
-    libjson
-
 PRODUCT_PACKAGES += \
     lights.hammerhead
 
@@ -277,8 +272,9 @@ PRODUCT_PACKAGES += \
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
+    resize2fs_static \
     e2fsck
-
+    
 PRODUCT_PACKAGES += \
     bdAddrLoader
 
@@ -426,10 +422,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Reduce client buffer size for fast audio output tracks
 PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=1
-
-# USB OTG
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.isUsbOtgEnabled=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-swap=false
