@@ -108,7 +108,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/config-default.xml:system/halium/usr/share/repowerd/device-configs/config-hammerhead.xml \
     $(LOCAL_PATH)/ubuntu/bluetooth/hciattach:system/bin/hciattach \
     $(LOCAL_PATH)/ubuntu/bluetooth/bluetooth-touch-android.conf:system/halium/etc/init/bluetooth-touch-android.conf
-#    $(LOCAL_PATH)/audio/mixer_paths.xml:system/halium/etc/mixer_paths.xml
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.t-o.quirk.forcesink=sink.primary \
@@ -149,7 +148,6 @@ PRODUCT_PACKAGES += \
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
-    LiveWallpapersPicker \
     librs_jni
 
 PRODUCT_PACKAGES += \
