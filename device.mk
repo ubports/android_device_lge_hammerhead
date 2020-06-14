@@ -117,7 +117,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Additional Android stuff for Ubuntu Touch
 PRODUCT_PACKAGES := \
     libmedia_compat \
-    minimediaservice
+    minimediaservice \
+    halium-boot
 
 #Ubuntu Touch: USB port handling
 PRODUCT_COPY_FILES += \
