@@ -107,6 +107,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
     $(LOCAL_PATH)/ubuntu/config-default.xml:system/halium/usr/share/repowerd/device-configs/config-hammerhead.xml \
     $(LOCAL_PATH)/ubuntu/bluetooth/hciattach:system/bin/hciattach \
+    $(LOCAL_PATH)/ubuntu/device-hacks.conf:system/halium/etc/init/device-hacks.conf \
     $(LOCAL_PATH)/ubuntu/bluetooth/bluetooth-touch-android.conf:system/halium/etc/init/bluetooth-touch-android.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -119,10 +120,10 @@ PRODUCT_PACKAGES := \
     minimediaservice
 
 #Ubuntu Touch: USB port handling
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/ubuntu/usb/setupusb:system/halium/usr/share/usbinit/setupusb \
-#    $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf \
-#    $(LOCAL_PATH)/ubuntu/usb/mtp-server.conf:system/halium/usr/share/upstart/sessions/mtp-server.conf
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/ubuntu/usb/setupusb:system/halium/usr/share/usbinit/setupusb \
+    $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf \
+#    $(LOCAL_PATH)/ubuntu/usb/mtp-server.conf:system/halium/usr/share/upstart/sessions/mtp-server.conf // this will not add for now
 
 # for off charging mode
 PRODUCT_PACKAGES += \
