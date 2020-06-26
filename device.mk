@@ -104,7 +104,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/ofono.override:system/halium/etc/init/ofono.override \
     $(LOCAL_PATH)/ubuntu/70-hammerhead.rules:system/halium/lib/udev/rules.d/70-android.rules \
-    $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
+    $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/hammerhead.conf \
     $(LOCAL_PATH)/ubuntu/config-default.xml:system/halium/usr/share/repowerd/device-configs/config-hammerhead.xml \
     $(LOCAL_PATH)/ubuntu/bluetooth/hciattach:system/bin/hciattach \
     $(LOCAL_PATH)/ubuntu/bluetooth/bluetooth-touch-android.conf:system/halium/etc/init/bluetooth-touch-android.conf
@@ -117,7 +117,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Additional Android stuff for Ubuntu Touch
 PRODUCT_PACKAGES := \
     libmedia_compat \
-    minimediaservice
+    minimediaservice \
+    libaudioflingerglue
 
 #Ubuntu Touch: USB port handling
 #PRODUCT_COPY_FILES += \
@@ -130,7 +131,8 @@ PRODUCT_PACKAGES += \
     charger_res_images
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ubuntu.widi.supported=1
+    ubuntu.widi.supported=1 \
+    ro.build.vanilla.abi=1
 
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
