@@ -44,6 +44,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     device/lge/hammerhead/audio_policy.conf:system/etc/audio_policy.conf \
+    device/lge/hammerhead/audio_platform_info.xml:system/etc/audio_platform_info.xml \
     device/lge/hammerhead/mixer_paths.xml:system/etc/mixer_paths.xml
 
 PRODUCT_COPY_FILES += \
@@ -104,34 +105,46 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/ofono.override:system/halium/etc/init/ofono.override \
     $(LOCAL_PATH)/ubuntu/70-hammerhead.rules:system/halium/lib/udev/rules.d/70-android.rules \
+    $(LOCAL_PATH)/ubuntu/70-hammerhead.rules:system/halium/usr/lib/lxc-android-config/70-hammerhead.rules \
     $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
+    $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/hammerhead.conf \
     $(LOCAL_PATH)/ubuntu/config-default.xml:system/halium/usr/share/repowerd/device-configs/config-hammerhead.xml \
-    $(LOCAL_PATH)/ubuntu/bluetooth/hciattach:system/bin/hciattach \
     $(LOCAL_PATH)/ubuntu/device-hacks.conf:system/halium/etc/init/device-hacks.conf \
+    $(LOCAL_PATH)/ubuntu/config-default.xml:system/halium/usr/share/powerd/device_configs/config-hammerhead.xml \
+    $(LOCAL_PATH)/ubuntu/bluetooth/hciattach:system/bin/hciattach \
+    $(LOCAL_PATH)/ubuntu/apparmor.d/abstractions/base:system/halium/etc/apparmor.d/abstractions/base \
+    $(LOCAL_PATH)/ubuntu/apparmor.d/hardware/audio.d/apparmor-easyprof-ubuntu_android:system/halium/etc/apparmor.d/hardware/audio.d/apparmor-easyprof-ubuntu_android \
+    $(LOCAL_PATH)/ubuntu/apparmor.d/hardware/video.d/apparmor-easyprof-ubuntu_android:system/halium/etc/apparmor.d/hardware/video.d/apparmor-easyprof-ubuntu_android \
+    $(LOCAL_PATH)/ubuntu/apparmor.d/hardware/graphics.d/apparmor-easyprof-ubuntu_android:system/halium/etc/apparmor.d/hardware/graphics.d/apparmor-easyprof-ubuntu_android \
+    $(LOCAL_PATH)/ubuntu/apparmor.d/local/usr.bin.media-hub-server:system/halium/etc/apparmor.d/local/usr.bin.media-hub-server \
+    $(LOCAL_PATH)/ubuntu/timekeeper.conf:system/halium/etc/init/timekeeper.conf \
+    $(LOCAL_PATH)/ubuntu/touch-symlinks.conf:system/halium/etc/init/touch-symlinks.conf \
     $(LOCAL_PATH)/ubuntu/bluetooth/bluetooth-touch-android.conf:system/halium/etc/init/bluetooth-touch-android.conf
-
+    
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.t-o.quirk.forcesink=sink.primary \
     ro.t-o.quirk.forcesource=source.primary
 
 # Additional Android stuff for Ubuntu Touch
-PRODUCT_PACKAGES := \
+PRODUCT_PACKAGES += \
+    halium-boot \
     libmedia_compat \
     minimediaservice \
-    halium-boot
+    libaudioflingerglue
 
 #Ubuntu Touch: USB port handling
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/ubuntu/usb/setupusb:system/halium/usr/share/usbinit/setupusb \
-    $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf \
-#    $(LOCAL_PATH)/ubuntu/usb/mtp-server.conf:system/halium/usr/share/upstart/sessions/mtp-server.conf // this will not add for now
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/ubuntu/usb/setupusb:system/halium/usr/share/usbinit/setupusb \
+#    $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf \
+#    $(LOCAL_PATH)/ubuntu/usb/mtp-server.conf:system/halium/usr/share/upstart/sessions/mtp-server.conf
 
 # for off charging mode
 PRODUCT_PACKAGES += \
     charger_res_images
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ubuntu.widi.supported=1
+    ubuntu.widi.supported=1 \
+    ro.build.vanilla.abi=1
 
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
@@ -142,6 +155,8 @@ DEVICE_PACKAGE_OVERLAYS := \
     device/lge/hammerhead/overlay
 
 PRODUCT_PACKAGES += \
+    brcm_patchram_plus \
+    hciattach \
     libwpa_client \
     hostapd \
     dhcpcd.conf \
@@ -370,7 +385,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.always_send_plmn=true
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    rild.libpath=/system/lib/libril-qc-qmi-1.so
+    rild.libpath=/system/lib/libril-qc-qmi-1.sorild.libpath=/system/lib/libril-qc-qmi-1.so
 
 # Allow tethering without provisioning app
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -380,7 +395,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     camera.disable_zsl_mode=1 \
     media.stagefright.legacyencoder=true \
-    media.stagefright.less-secure=true
+    media.stagefright.less-secure=true \
+    persist.camera.HAL3.enabled=0
 
 # Input resampling configuration
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -392,7 +408,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-swap=false
-
+    
 # Modem debugger
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PACKAGES += \
