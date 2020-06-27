@@ -1,0 +1,4 @@
+/{android/,}system/etc/media_codecs_performance.xml      r,
+/{android/,}system/etc/media_codecs_google_audio.xml     r,
+/{android/,}system/etc/media_codecs_google_telephony.xml r,
+/{android/,}system/etc/media_codecs_google_video.xml     r,
