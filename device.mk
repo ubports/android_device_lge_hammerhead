@@ -127,8 +127,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES := \
     halium-boot \
     libmedia_compat \
-    minimediaservice \
-    libaudioflingerglue
+    minimediaservice
 
 #Ubuntu Touch: USB port handling
 #PRODUCT_COPY_FILES += \
