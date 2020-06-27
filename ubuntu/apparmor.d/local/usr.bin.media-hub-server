@@ -1,3 +1,2 @@
 /dev/socket/logdw              rw,
 /dev/pmsg0                     rw,
-/socket/logdw                  rw,

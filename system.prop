@@ -1,0 +1,14 @@
+# Camera
+camera.disable_zsl_mode=1
+media.stagefright.legacyencoder=true
+media.stagefright.less-secure=true
+persist.camera.HAL3.enabled=0
+
+# Rild
+rild.libpath=/system/lib/libril-qc-qmi-1.so
+
+# Radio
+persist.radio.use_cc_names=true
+
+# MTP
+persist.sys.usb.config=mtp,adb

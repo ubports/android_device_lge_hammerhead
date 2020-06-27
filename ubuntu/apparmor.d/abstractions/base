@@ -49,10 +49,10 @@
   /proc/cmdline                  r,
   /socket/logdw                  rw,
 
-  /usr/lib{,32,64}/arm-linux-gnueabihf/**  mr,
-  /usr/lib{,32,64}/locale/**             mr,
-  /usr/lib{,32,64}/gconv/*.so            mr,
-  /usr/lib{,32,64}/gconv/gconv-modules*  mr,
+  /usr/lib{,32}/arm-linux-gnueabihf/**  mr,
+  /usr/lib{,32}/locale/**             mr,
+  /usr/lib{,32}/gconv/*.so            mr,
+  /usr/lib{,32}/gconv/gconv-modules*  mr,
   /usr/lib/@{multiarch}/gconv/*.so           mr,
   /usr/lib/@{multiarch}/gconv/gconv-modules* mr,
 
@@ -62,23 +62,23 @@
   # ld.so.cache and ld are used to load shared libraries; they are best
   # available everywhere
   /etc/ld.so.cache               mr,
-  /lib{,32,64}/ld{,32,64}-*.so   mrix,
-  /lib{,32,64}/**/ld{,32,64}-*.so     mrix,
-  /lib/@{multiarch}/ld{,32,64}-*.so    mrix,
+  /lib{,32}/ld{,32}-*.so   mrix,
+  /lib{,32}/**/ld{,32}-*.so     mrix,
+  /lib/@{multiarch}/ld{,32}-*.so    mrix,
   /lib/tls/i686/{cmov,nosegneg}/ld-*.so     mrix,
   /lib/i386-linux-gnu/tls/i686/{cmov,nosegneg}/ld-*.so     mrix,
   /opt/*-linux-uclibc/lib/ld-uClibc*so* mrix,
 
   # we might as well allow everything to use common libraries
-  /lib{,32,64}/**                r,
-  /lib{,32,64}/lib*.so*          mr,
-  /lib{,32,64}/**/lib*.so*       mr,
+  /lib{,32}/**                r,
+  /lib{,32}/lib*.so*          mr,
+  /lib{,32}/**/lib*.so*       mr,
   /lib/@{multiarch}/**            r,
   /lib/@{multiarch}/lib*.so*      mr,
   /lib/@{multiarch}/**/lib*.so*   mr,
-  /usr/lib{,32,64}/**            r,
-  /usr/lib{,32,64}/*.so*         mr,
-  /usr/lib{,32,64}/**/lib*.so*   mr,
+  /usr/lib{,32}/**            r,
+  /usr/lib{,32}/*.so*         mr,
+  /usr/lib{,32}/**/lib*.so*   mr,
   /usr/lib/@{multiarch}/**          r,
   /usr/lib/@{multiarch}/lib*.so*    mr,
   /usr/lib/@{multiarch}/**/lib*.so* mr,
@@ -102,14 +102,15 @@
   #  /android/system/vendor/lib{,64}
   #  /odm/lib{,64}
   #  /android/odm/lib{,64}
-  /{,android/}vendor/lib{,64}/**           r,
-  /{,android/}vendor/lib{,64}/**.so        m,
-  /{,android/}system/lib{,64}/**           r,
-  /{,android/}system/lib{,64}/**.so        m,
-  /{,android/}system/vendor/lib{,64}/**    r,
-  /{,android/}system/vendor/lib{,64}/**.so m,
-  /{,android/}odm/lib{,64}/**    r,
-  /{,android/}odm/lib{,64}/**.so m,
+  /{,android/}vendor/lib{,32,64}/**           r,
+  /{,android/}vendor/lib{,32,64}/**.so        m,
+  /{,android/}system/lib{,32,64}/**           r,
+  /{,android/}system/lib{,32,64}/**.so        m,
+  /{,android/}system/etc{,32,64}/**           m,
+  /{,android/}system/vendor/lib{,32,64}/**    r,
+  /{,android/}system/vendor/lib{,32,64}/**.so m,
+  /{,android/}odm/lib{,32,64}/**    r,
+  /{,android/}odm/lib{,32,64}/**.so m,
 
   # /dev/null is pretty harmless and frequently used
   /dev/null                      rw,

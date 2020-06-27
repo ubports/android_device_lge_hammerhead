@@ -391,9 +391,9 @@ service time_daemon /system/bin/time_daemon
     user root
     group root
 
-service minimedia /system/bin/minimediaservice
-    class main
-    user media
-    group audio camera
-    ioprio rt 4
+#service minimedia /system/bin/minimediaservice
+#    class main
+#    user media
+#    group audio camera
+#    ioprio rt 4
 
