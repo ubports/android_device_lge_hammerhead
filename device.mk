@@ -119,15 +119,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/timekeeper.conf:system/halium/etc/init/timekeeper.conf \
     $(LOCAL_PATH)/ubuntu/bluetooth/bluetooth-touch-android.conf:system/halium/etc/init/bluetooth-touch-android.conf
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.t-o.quirk.forcesink=sink.primary \
-    ro.t-o.quirk.forcesource=source.primary
-
 # Additional Android stuff for Ubuntu Touch
 PRODUCT_PACKAGES := \
     halium-boot \
-    libmedia_compat \
-    minimediaservice
 
 #Ubuntu Touch: USB port handling
 #PRODUCT_COPY_FILES += \
