@@ -107,18 +107,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/hammerhead.conf \
     $(LOCAL_PATH)/ubuntu/config-default.xml:system/halium/usr/share/repowerd/device-configs/config-hammerhead.xml \
     $(LOCAL_PATH)/ubuntu/bluetooth/hciattach:system/bin/hciattach \
-    $(LOCAL_PATH)/ubuntu/bluetooth/bluetooth-touch-android.conf:system/halium/etc/init/bluetooth-touch-android.conf
-#    $(LOCAL_PATH)/audio/mixer_paths.xml:system/halium/etc/mixer_paths.xml
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.t-o.quirk.forcesink=sink.primary \
-    ro.t-o.quirk.forcesource=source.primary
-
-# Additional Android stuff for Ubuntu Touch
-PRODUCT_PACKAGES := \
-    libmedia_compat \
-    minimediaservice \
-    libaudioflingerglue
+    $(LOCAL_PATH)/ubuntu/bluetooth/bluetooth-touch-android.conf:system/halium/etc/init/bluetooth-touch-android.conf \
+    $(LOCAL_PATH)/ubuntu/device-hacks.conf:system/halium/etc/init/device-hacks.conf
 
 #Ubuntu Touch: USB port handling
 #PRODUCT_COPY_FILES += \
