@@ -127,6 +127,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Additional Android stuff for Ubuntu Touch
 PRODUCT_PACKAGES := \
+    halium-boot \
     libmedia_compat \
     minimediaservice \
     libaudioflingerglue
