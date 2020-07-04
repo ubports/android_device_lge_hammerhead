@@ -15,8 +15,8 @@
 #
 
 import init.hammerhead.usb.rc
+import init.hammerhead_svelte.rc
 import init.hammerhead.diag.rc
-import init.hammerhead_fp.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -114,15 +114,7 @@ on boot
     chown system system /sys/class/leds/green/on_off_ms
     chown system system /sys/class/leds/blue/on_off_ms
     chown system system /sys/class/leds/red/rgb_start
-    chmod 0666 /sys/class/leds/red/on_off_ms
-    chmod 0666 /sys/class/leds/green/on_off_ms
-    chmod 0666 /sys/class/leds/blue/on_off_ms
-    chmod 0666 /sys/class/leds/red/rgb_start
-    chmod 0666 /sys/class/leds/led\:flash_torch/brightness
-    chmod 0666 /sys/class/leds/lcd-backlight/brightness
-    chmod 0666 /sys/class/leds/red/brightness
-    chmod 0666 /sys/class/leds/green/brightness
-    chmod 0666 /sys/class/leds/blue/brightness
+    chmod 664 /sys/class/leds/lcd-backlight/brightness
 
 on post-fs-data
     write /sys/kernel/boot_adsp/boot 1
@@ -137,7 +129,6 @@ on post-fs-data
 
     # wifi
     chown wifi system /persist/wifi
-    insmod /system/lib/modules/bcmdhd.ko
 
     #  bluetooth
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
@@ -174,9 +165,6 @@ on post-fs-data
 
     # Set the CPU Freq Sampling rates
     write /sys/module/msm_thermal/core_control/enabled 0
-    chmod 664 /sys/devices/system/cpu/cpu1/online
-    chmod 664 /sys/devices/system/cpu/cpu2/online
-    chmod 664 /sys/devices/system/cpu/cpu3/online
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
@@ -201,6 +189,9 @@ on post-fs-data
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 300000
     write /sys/module/msm_thermal/core_control/enabled 1
     chmod 220 /sys/devices/system/cpu/mfreq
+    chmod 664 /sys/devices/system/cpu/cpu1/online
+    chmod 664 /sys/devices/system/cpu/cpu2/online
+    chmod 664 /sys/devices/system/cpu/cpu3/online
     write /dev/cpuctl/apps/cpu.notify_on_migrate 1
 
 on charger
@@ -390,4 +381,3 @@ service time_daemon /system/bin/time_daemon
     class late_start
     user root
     group root
-
