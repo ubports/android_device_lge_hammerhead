@@ -156,6 +156,10 @@ PRODUCT_PACKAGES += \
 
 MINIMEDIA_SENSORSERVER_DISABLE := 1
 
+# Quirks for Halium
+ro.t-o.quirk.forcesink=sink.primary
+ro.t-o.quirk.forcesource=source.primary
+
 PRODUCT_PACKAGES := \
     brcm_patchram_plus \
     hciattach \
