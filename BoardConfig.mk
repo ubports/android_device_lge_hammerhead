@@ -45,12 +45,7 @@ BOARD_USES_ALSA_AUDIO := true
 
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-
-ifeq ($(TARGET_PRODUCT),car_hammerhead)
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/hammerhead/bluetooth_car
-else
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/hammerhead/bluetooth
-endif
 
 # Wifi related defines
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
@@ -104,11 +99,8 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_KERNEL_CONFIG := cyanogenmod_hammerhead_defconfig
 TARGET_KERNEL_SOURCE := kernel/lge/hammerhead
 
-ifneq ($(filter hammerhead_fp aosp_hammerhead_fp,$(TARGET_PRODUCT)),)
-BOARD_HAS_FINGERPRINT_FPC := true
-endif
-
 BOARD_CHARGER_ENABLE_SUSPEND := true
+
 # Ubuntu
 BOARD_HEALTHD_CUSTOM_CHARGER_RES := device/lge/hammerhead/charger/images
 
@@ -120,19 +112,7 @@ BOARD_HAL_STATIC_LIBRARIES := libdumpstate.hammerhead
 
 BOARD_SEPOLICY_DIRS += device/lge/hammerhead/sepolicy
 
-ifneq ($(filter hammerhead_fp aosp_hammerhead_fp,$(TARGET_PRODUCT)),)
-BOARD_SEPOLICY_DIRS += \
-       device/lge/hammerhead/sepolicy-hammerhead_fp
-
-# The list below is order dependent
-BOARD_SEPOLICY_UNION += \
-       device.te \
-       system_server.te \
-       file_contexts
-endif
-
 HAVE_ADRENO_SOURCE:= false
-
 OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 TARGET_HAS_HH_VSYNC_ISSUE := true
@@ -145,9 +125,9 @@ TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS:= true
 
-ifeq ($(USE_SVELTE_KERNEL),true)
-MALLOC_SVELTE := true
-endif
+# Halium Specific defining libs to 32 bit only
+DROIDMEDIA_32 := true
+HYBRIS_MEDIA_32_BIT_ONLY := true
 
 # Hardware
 BOARD_USES_CYANOGEN_HARDWARE := true
