@@ -100,8 +100,8 @@
   #  /android/vendor/lib{,64}
   #  /android/system/lib{,64}
   #  /android/system/vendor/lib{,64}
-  #  /odm/lib{,64}
-  #  /android/odm/lib{,64}
+  #  /odm/lib{,32,64}
+  #  /android/odm/lib{,32,64}
   /{,android/}vendor/lib{,32,64}/**           r,
   /{,android/}vendor/lib{,32,64}/**.so        m,
   /{,android/}system/lib{,32,64}/**           r,
