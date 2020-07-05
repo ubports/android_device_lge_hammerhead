@@ -14,9 +14,9 @@ Display | 4.95"  1080x1920 px
 Rear Camera  | 8MPx, LED Flash
 Front Camera  | 1.3MP
 
-![Nexus 5](https://github.com/rubencarneiro/devices_images/blob/master/Nexus5.png "Nexus 5") =250x250
+![Nexus 5](https://github.com/rubencarneiro/devices_images/blob/master/Nexus5.png "Nexus 5")
 
-![Halium](https://github.com/rubencarneiro/devices_images/blob/master/halium.png "Halium") =250x250
+![Halium](https://github.com/rubencarneiro/devices_images/blob/master/halium.png "Halium")
 
 - [X] Booth image and system image build successfully
 - [X] Device boots into rootfs its hard to boot a second time
