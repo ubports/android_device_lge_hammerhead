@@ -33,6 +33,7 @@ Halium 7.1
 - [X] Audio
 - [X] Audio on Calls
 - [X] Audio on Headphones
+- [ ] Audio on Hanset
 - [ ] Camera Pictures
 - [ ] Camera Video Recording - Does not work
 - [X] Video Decode
