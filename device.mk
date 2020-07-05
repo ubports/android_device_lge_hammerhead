@@ -115,17 +115,22 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/device-hacks.conf:system/halium/etc/init/device-hacks.conf
 
 #Ubuntu Touch: USB port handling
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/ubuntu/usb/setupusb:system/halium/usr/share/usbinit/setupusb \
-#    $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf \
-#    $(LOCAL_PATH)/ubuntu/usb/mtp-server.conf:system/halium/usr/share/upstart/sessions/mtp-server.conf
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/ubuntu/usb/setupusb:system/halium/usr/share/usbinit/setupusb \
+    $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf
 
-PRODUCT_PACKAGES += \
-    charger_res_images
-
+# Ubuntu WIDI
 PRODUCT_PROPERTY_OVERRIDES += \
     ubuntu.widi.supported=1 \
     ro.build.vanilla.abi=1
+
+# Quirks for Halium
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.t-o.quirk.forcesink=sink.primary \
+ro.t-o.quirk.forcesource=source.primary
+
+# Minimedia sensor disable
+MINIMEDIA_SENSORSERVER_DISABLE := 1
 
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
@@ -135,32 +140,19 @@ PRODUCT_CHARACTERISTICS := nosdcard
 DEVICE_PACKAGE_OVERLAYS := \
     device/lge/hammerhead/overlay
 
+# Charger Images
+PRODUCT_PACKAGES += \
+    charger_res_images
+
 PRODUCT_PACKAGES += \
     halium-boot \
-    libubuntu_application_api \
-    direct_ubuntu_application_sensors_c_api_for_hybris_test \
-    direct_ubuntu_application_sensors_for_hybris_test \
-    direct_ubuntu_application_gps_c_api_for_hybris_test \
-    libcameraservice \
-    libdroidmedia \
-    libcamera_compat_layer \
-    camera_service \
-    libmedia_compat_layer \
-    libui_compat_layer \
-    libsf_compat_layer \
+    libmedia_compat \
     minimediaservice \
-    minisfservice \
-    libminisf \
     libaudioflingerglue \
+    libminisf \
     miniafservice
 
-MINIMEDIA_SENSORSERVER_DISABLE := 1
-
-# Quirks for Halium
-ro.t-o.quirk.forcesink=sink.primary
-ro.t-o.quirk.forcesource=source.primary
-
-PRODUCT_PACKAGES := \
+PRODUCT_PACKAGES += \
     brcm_patchram_plus \
     hciattach \
     libwpa_client \
@@ -191,6 +183,7 @@ PRODUCT_PACKAGES += \
     libOmxVdecHevc \
     libOmxVenc
 
+# Audio
 PRODUCT_PACKAGES += \
     audio.primary.msm8974 \
     audio.a2dp.default \
@@ -208,7 +201,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     device/lge/hammerhead/audio_effects.conf:system/vendor/etc/audio_effects.conf
-
 
 # Camera
 PRODUCT_PACKAGES += \
