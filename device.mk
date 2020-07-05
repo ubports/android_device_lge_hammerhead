@@ -18,6 +18,7 @@
 # are also specific to hammerhead devices
 #
 # Everything in this directory will become public
+
 LOCAL_PATH := device/lge/hammerhead
 
 PRODUCT_COPY_FILES += \
@@ -114,23 +115,19 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/apparmor.d/local/usr.bin.media-hub-server:system/halium/etc/apparmor.d/local/usr.bin.media-hub-server \
     $(LOCAL_PATH)/ubuntu/device-hacks.conf:system/halium/etc/init/device-hacks.conf
 
+
 #Ubuntu Touch: USB port handling
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/usb/setupusb:system/halium/usr/share/usbinit/setupusb \
     $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf
 
-# Ubuntu WIDI
+# for off charging mode
+PRODUCT_PACKAGES += \
+    charger_res_images
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ubuntu.widi.supported=1 \
     ro.build.vanilla.abi=1
-
-# Quirks for Halium
-PRODUCT_PROPERTY_OVERRIDES += \
-ro.t-o.quirk.forcesink=sink.primary \
-ro.t-o.quirk.forcesource=source.primary
-
-# Minimedia sensor disable
-MINIMEDIA_SENSORSERVER_DISABLE := 1
 
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
@@ -139,18 +136,20 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 DEVICE_PACKAGE_OVERLAYS := \
     device/lge/hammerhead/overlay
-
-# Charger Images
-PRODUCT_PACKAGES += \
-    charger_res_images
-
-PRODUCT_PACKAGES += \
+    
+PRODUCT_PACKAGES := \
     halium-boot \
-    libmedia_compat \
-    minimediaservice \
-    libaudioflingerglue \
+    libcameraservice \
+    libdroidmedia \
+    libcamera_compat_layer \
+    camera_service \
+    libmedia_compat_layer \
+    minisfservice \
     libminisf \
+    libaudioflingerglue \
     miniafservice
+    
+MINIMEDIA_SENSORSERVER_DISABLE := 1
 
 PRODUCT_PACKAGES += \
     brcm_patchram_plus \
@@ -200,12 +199,13 @@ PRODUCT_PACKAGES += \
     libqcompostprocbundle
 
 PRODUCT_COPY_FILES += \
-    device/lge/hammerhead/audio_effects.conf:system/vendor/etc/audio_effects.conf
+    device/lge/hammerhead/audio_effects.conf:system/etc/audio_effects.conf
 
 # Camera
 PRODUCT_PACKAGES += \
     libqomx_core \
     libmmcamera_interface \
+    libmmcamera_interface2 \
     libmmjpeg_interface \
     camera.hammerhead \
     mm-jpeg-interface-test \
@@ -217,6 +217,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     power.msm8974
+
+# Gello
+PRODUCT_PACKAGES += \
+    Gello
 
 # GPS configuration
 PRODUCT_COPY_FILES += \
@@ -254,8 +258,8 @@ PRODUCT_PACKAGES += \
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
-    resize2fs_static \
-    e2fsck
+    e2fsck \
+    bluetoothd
 
 PRODUCT_PACKAGES += \
     bdAddrLoader
@@ -370,6 +374,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicecomm=true \
     persist.audio.fluence.voicerec=false \
     persist.audio.fluence.speaker=false
+    
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.t-o.quirk.forcesink=sink.primary \
+    ro.t-o.quirk.forcesource=source.fast_input
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.vc_call_vol_steps=6
@@ -392,11 +400,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     net.tethering.noprovisioning=true
 
 # Camera configuration
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.camera.HAL3.enabled=0 \
     camera.disable_zsl_mode=1 \
     media.stagefright.legacyencoder=true \
     media.stagefright.less-secure=true
-
+    
 # Input resampling configuration
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.input.noresample=1
@@ -420,8 +429,21 @@ PRODUCT_COPY_FILES += \
     device/lge/hammerhead/init.hammerhead.diag.rc.user:root/init.hammerhead.diag.rc
 endif
 
+ifneq ($(filter hammerhead_fp aosp_hammerhead_fp,$(TARGET_PRODUCT)),)
+PRODUCT_COPY_FILES += \
+    device/lge/hammerhead/init.hammerhead_fp.rc:root/init.hammerhead_fp.rc \
+    hardware/broadcom/wlan/bcmdhd/firmware/bcm4339/fw_bcmdhd_fp.bin:system/vendor/firmware/fw_bcmdhd.bin \
+    hardware/broadcom/wlan/bcmdhd/firmware/bcm4339/fw_bcmdhd_apsta.bin:system/vendor/firmware/fw_bcmdhd_apsta.bin
+
+PRODUCT_COPY_FILES += \
+    hardware/broadcom/wlan/bcmdhd/config/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    hardware/broadcom/wlan/bcmdhd/config/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+
+else
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4339/device-bcm.mk)
+endif
+
 # setup dalvik vm configs.
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 $(call inherit-product-if-exists, vendor/qcom/gpu/msm8x74/msm8x74-gpu-vendor.mk)
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4339/device-bcm.mk)
