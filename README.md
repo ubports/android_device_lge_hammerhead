@@ -42,4 +42,4 @@ Halium 7.1
 - [X] Rotation
 - [X] RNDIS
 - [X] GPS
-- [X] MPT
+- [X] MPT - But usb connected on boot cause the device to reboot connect the usb after boot.
