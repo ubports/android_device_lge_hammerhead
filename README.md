@@ -38,4 +38,4 @@ Front Camera  | 1.3MP
 - [X] Rotation
 - [X] RNDIS
 - [X] GPS
-- [X] MPT -Not Fully working
+- [X] MPT
