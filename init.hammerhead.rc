@@ -137,6 +137,7 @@ on post-fs-data
 
     # wifi
     chown wifi system /persist/wifi
+    insmod /system/lib/modules/bcmdhd.ko
 
     #  bluetooth
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
@@ -200,9 +201,6 @@ on post-fs-data
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 300000
     write /sys/module/msm_thermal/core_control/enabled 1
     chmod 220 /sys/devices/system/cpu/mfreq
-    chmod 664 /sys/devices/system/cpu/cpu1/online
-    chmod 664 /sys/devices/system/cpu/cpu2/online
-    chmod 664 /sys/devices/system/cpu/cpu3/online
     write /dev/cpuctl/apps/cpu.notify_on_migrate 1
 
 on charger
@@ -392,3 +390,4 @@ service time_daemon /system/bin/time_daemon
     class late_start
     user root
     group root
+
