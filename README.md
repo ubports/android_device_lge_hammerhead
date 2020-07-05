@@ -18,6 +18,9 @@ Front Camera  | 1.3MP
 
 ![Halium](https://github.com/rubencarneiro/devices_images/blob/master/halium.png "Halium")
 
+Halium 7.1
+==============
+
 - [X] Booth image and system image build successfully
 - [X] Device boots into rootfs its hard to boot a second time
 - [X] LXC container starts and does not crash
