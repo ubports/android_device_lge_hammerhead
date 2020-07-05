@@ -45,3 +45,4 @@
         <param key="snd_card_name" value="msm8974-taiko-mtp-snd-card"/>
     </config_params>
 </audio_platform_info>
+
