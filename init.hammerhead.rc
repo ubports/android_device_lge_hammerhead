@@ -390,4 +390,15 @@ service time_daemon /system/bin/time_daemon
     class late_start
     user root
     group root
-
+    
+service minimedia /system/bin/minimediaservice
+    class main
+    user media
+    group audio camera
+    ioprio rt 4
+    
+service minisf /system/bin/minisfservice
+    setenv LD_PRELOAD /system/lib/libsurfaceflinger.so
+    class main
+    user system
+    group graphics
