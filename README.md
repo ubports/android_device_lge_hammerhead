@@ -34,7 +34,7 @@ Halium 7.1
 - [X] Audio on Calls
 - [X] Audio on Headphones
 - [ ] Audio on Hanset
-- [ ] Camera Pictures
+- [X] Camera Pictures But Freezes
 - [ ] Camera Video Recording - Does not work
 - [X] Video Decode
 - [X] Light/Proximity

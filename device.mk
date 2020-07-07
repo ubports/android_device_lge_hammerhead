@@ -103,6 +103,7 @@ PRODUCT_COPY_FILES += \
 
 # Ubuntu Touch
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/ubuntu/android-tools-adb.conf:system/halium/etc/init/android-tools-adb.conf \
     $(LOCAL_PATH)/ubuntu/ofono.override:system/halium/etc/init/ofono.override \
     $(LOCAL_PATH)/ubuntu/70-hammerhead.rules:system/halium/lib/udev/rules.d/70-android.rules \
     $(LOCAL_PATH)/ubuntu/70-hammerhead.rules:system/halium/usr/lib/lxc-android-config/70-hammerhead.rules \
@@ -113,17 +114,14 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/bluetooth/bluetooth-touch-android.conf:system/halium/etc/init/bluetooth-touch-android.conf \
     $(LOCAL_PATH)/ubuntu/apparmor.d/abstractions/base:system/halium/etc/apparmor.d/abstractions/base \
     $(LOCAL_PATH)/ubuntu/apparmor.d/local/usr.bin.media-hub-server:system/halium/etc/apparmor.d/local/usr.bin.media-hub-server \
+    $(LOCAL_PATH)/ubuntu/rsyslog.conf:system/halium/etc/rsyslog.conf \
     $(LOCAL_PATH)/ubuntu/device-hacks.conf:system/halium/etc/init/device-hacks.conf
 
 
 #Ubuntu Touch: USB port handling
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/ubuntu/usb/setupusb:system/halium/usr/share/usbinit/setupusb \
-    $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf
-
-# for off charging mode
-PRODUCT_PACKAGES += \
-    charger_res_images
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/ubuntu/usb/setupusb:system/halium/usr/share/usbinit/setupusb \
+#    $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ubuntu.widi.supported=1 \
@@ -137,19 +135,26 @@ PRODUCT_CHARACTERISTICS := nosdcard
 DEVICE_PACKAGE_OVERLAYS := \
     device/lge/hammerhead/overlay
     
-PRODUCT_PACKAGES := \
+PRODUCT_PACKAGES += \
     halium-boot \
-    libcameraservice \
-    libdroidmedia \
-    libcamera_compat_layer \
+    libubuntu_application_api \
+    direct_ubuntu_application_sensors_c_api_for_hybris_test \
+    direct_ubuntu_application_sensors_for_hybris_test \
+    direct_ubuntu_application_gps_c_api_for_hybris_test \
+    libmedia_compat \
+    gst-droid \
     camera_service \
-    libmedia_compat_layer \
-    minisfservice \
-    libminisf \
+    minimediaservice \
     libaudioflingerglue \
+    libminisf \
+    minisfservice \
     miniafservice
     
 MINIMEDIA_SENSORSERVER_DISABLE := 1
+
+# for off charging mode
+PRODUCT_PACKAGES += \
+    charger_res_images
 
 PRODUCT_PACKAGES += \
     brcm_patchram_plus \
@@ -401,7 +406,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Camera configuration
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.camera.HAL3.enabled=0 \
     camera.disable_zsl_mode=1 \
     media.stagefright.legacyencoder=true \
     media.stagefright.less-secure=true
