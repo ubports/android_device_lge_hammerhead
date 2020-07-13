@@ -102,16 +102,13 @@ PRODUCT_COPY_FILES += \
     device/lge/hammerhead/thermal-engine-8974.conf:system/etc/thermal-engine-8974.conf
 
 # Ubuntu Touch
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/ubuntu/android-tools-adb.conf:system/halium/etc/init/android-tools-adb.conf \
-    $(LOCAL_PATH)/ubuntu/ofono.override:system/halium/etc/init/ofono.override \
-    $(LOCAL_PATH)/ubuntu/70-hammerhead.rules:system/halium/lib/udev/rules.d/70-android.rules \
-    $(LOCAL_PATH)/ubuntu/70-hammerhead.rules:system/halium/usr/lib/lxc-android-config/70-hammerhead.rules \
-    $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/hammerhead.conf \
-    $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
-    $(LOCAL_PATH)/ubuntu/config-default.xml:system/halium/usr/share/repowerd/device-configs/config-hammerhead.xml \
-    $(LOCAL_PATH)/ubuntu/bluetooth/hciattach:system/bin/hciattach \
-    $(LOCAL_PATH)/ubuntu/bluetooth/bluetooth-touch-android.conf:system/halium/etc/init/bluetooth-touch-android.conf \
+PRODUCT_COPY_FILES += \rs.step_detector=true \
+    ro.qti.sensors.step_counter=true \
+    ro.qti.sensors.tap=false \
+    ro.qti.sensors.facing=false \
+    ro.qti.sensors.tilt=false \
+    ro.qti.sensors.amd=false \
+    ro.qti.sensouetooth-touch-android.conf:system/halium/etc/init/bluetooth-touch-android.conf \
     $(LOCAL_PATH)/ubuntu/apparmor.d/abstractions/base:system/halium/etc/apparmor.d/abstractions/base \
     $(LOCAL_PATH)/ubuntu/apparmor.d/local/usr.bin.media-hub-server:system/halium/etc/apparmor.d/local/usr.bin.media-hub-server \
     $(LOCAL_PATH)/ubuntu/rsyslog.conf:system/halium/etc/rsyslog.conf \
@@ -119,9 +116,9 @@ PRODUCT_COPY_FILES += \
 
 
 #Ubuntu Touch: USB port handling
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/ubuntu/usb/setupusb:system/halium/usr/share/usbinit/setupusb \
-#    $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/ubuntu/usb/setupusb:system/halium/usr/share/usbinit/setupusb \
+    $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ubuntu.widi.supported=1 \
@@ -142,7 +139,6 @@ PRODUCT_PACKAGES += \
     direct_ubuntu_application_sensors_for_hybris_test \
     direct_ubuntu_application_gps_c_api_for_hybris_test \
     libmedia_compat \
-    gst-droid \
     camera_service \
     minimediaservice \
     libaudioflingerglue \
@@ -191,9 +187,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     audio.primary.msm8974 \
     audio.a2dp.default \
-    audio.usb.default \
-    audio.r_submix.default \
-    libaudio-resampler \
+    audio.usb.defaultrs.step_detector=true \
+    ro.qti.sensors.step_counter=true \
+    ro.qti.sensors.tap=false \
+    ro.qti.sensors.facing=false \
+    ro.qti.sensors.tilt=false \
+    ro.qti.sensors.amd=false \
+    ro.qti.sensor \
     tinymix
 
 # Audio effects
@@ -382,7 +382,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.t-o.quirk.forcesink=sink.primary \
-    ro.t-o.quirk.forcesource=source.fast_input
+    ro.t-o.quirk.forcesource=source.primary
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.vc_call_vol_steps=6
