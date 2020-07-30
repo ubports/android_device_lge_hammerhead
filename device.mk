@@ -190,13 +190,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     audio.primary.msm8974 \
     audio.a2dp.default \
-    audio.usb.defaultrs.step_detector=true \
-    ro.qti.sensors.step_counter=true \
-    ro.qti.sensors.tap=false \
-    ro.qti.sensors.facing=false \
-    ro.qti.sensors.tilt=false \
-    ro.qti.sensors.amd=false \
-    ro.qti.sensor \
+    audio.usb.default \
+    audio.r_submix.default \
+    libaudio-resampler \
     tinymix
 
 # Audio effects
