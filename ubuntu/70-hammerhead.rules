@@ -114,10 +114,3 @@ ACTION=="add", KERNEL=="tun", OWNER="system", GROUP="vpn", MODE="0660"
 ACTION=="add", KERNEL=="ts0710mux*", OWNER="radio", GROUP="radio", MODE="0640"
 ACTION=="add", KERNEL=="ppp", OWNER="radio", GROUP="vpn", MODE="0660"
 ACTION=="add", KERNEL=="dvb*", OWNER="root", GROUP="system", MODE="0660"
-rs.step_detector=true \
-    ro.qti.sensors.step_counter=true \
-    ro.qti.sensors.tap=false \
-    ro.qti.sensors.facing=false \
-    ro.qti.sensors.tilt=false \
-    ro.qti.sensors.amd=false \
-    ro.qti.senso
