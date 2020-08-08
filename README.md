@@ -22,7 +22,7 @@ Halium 7.1
 ==============
 
 - [X] Booth image and system image build successfully
-- [X] Device boots into rootfs its hard to boot a second time
+- [X] Device boots into rootfs
 - [X] LXC container starts and does not crash
 - [X] libhybris tests
 - [X] Wifi
@@ -34,7 +34,7 @@ Halium 7.1
 - [X] Audio on Calls
 - [X] Audio on Headphones
 - [ ] Audio on Hanset/ Loudspeaker
-- [X] Camera Pictures But Freezes
+- [X] Camera Pictures
 - [ ] Camera Video Recording - Does not work
 - [X] Video Decode
 - [X] Light/Proximity
@@ -42,4 +42,4 @@ Halium 7.1
 - [X] Rotation
 - [X] RNDIS
 - [X] GPS
-- [X] MPT - But usb connected on boot cause the device to reboot connect the usb after boot.
+- [X] MPT
