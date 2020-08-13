@@ -156,8 +156,6 @@ PRODUCT_PACKAGES += \
     charger_res_images
 
 PRODUCT_PACKAGES += \
-    brcm_patchram_plus \
-    hciattach \
     libwpa_client \
     hostapd \
     dhcpcd.conf \
