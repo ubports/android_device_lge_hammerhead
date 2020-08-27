@@ -164,7 +164,7 @@ on post-fs-data
     mkdir /dev/socket/mpdecision 2770 root system
 
     # save rtc time offsets
-    mkdir /data/system/time 0700 system system
+    mkdir /data/time 777 system system
 
     # Ecc_Handler qcril.db
     mkdir /data/misc/radio 0770 radio radio
@@ -385,6 +385,12 @@ service vss_init /vendor/bin/vss_init
     user root
     group root
     disabled
+
+service time_daemon /system/bin/time_daemon
+    class late_start
+    user root
+    group root
+    disable
     
 service minimedia /system/bin/minimediaservice
     class main
