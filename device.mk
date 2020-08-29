@@ -101,26 +101,29 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/lge/hammerhead/thermal-engine-8974.conf:system/etc/thermal-engine-8974.conf
 
-
 # Ubuntu Touch
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/ofono.override:system/halium/etc/init/ofono.override \
+    $(LOCAL_PATH)/ubuntu/timekeeper.conf:system/halium/etc/init/timekeeper.conf \
+    $(LOCAL_PATH)/ubuntu/70-hammerhead.rules:system/halium/lib/udev/rules.d/70-android.rules \
     $(LOCAL_PATH)/ubuntu/70-hammerhead.rules:system/halium/usr/lib/lxc-android-config/70-hammerhead.rules \
-    $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
     $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/hammerhead.conf \
+    $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
+    $(LOCAL_PATH)/ubuntu/usr/share/upstart/sessions/audiosystem-passthrough.conf:system/halium/usr/share/upstart/sessions/audiosystem-passthrough.conf \
     $(LOCAL_PATH)/ubuntu/config-default.xml:system/halium/usr/share/repowerd/device-configs/config-hammerhead.xml \
-    $(LOCAL_PATH)/ubuntu/device-hacks.conf:system/halium/etc/init/device-hacks.conf \
-    $(LOCAL_PATH)/ubuntu/config-default.xml:system/halium/usr/share/powerd/device_configs/config-hammerhead.xml \
+    $(LOCAL_PATH)/ubuntu/usr/share/apparmor/hardware/graphics.d/apparmor-easyprof-ubuntu_android:system/halium/usr/share/apparmor/hardware/graphics.d/apparmor-easyprof-ubuntu_android \
+    $(LOCAL_PATH)/ubuntu/usr/share/apparmor/hardware/video.d/apparmor-easyprof-ubuntu_android:system/halium/usr/share/apparmor/hardware/video.d/apparmor-easyprof-ubuntu_android \
     $(LOCAL_PATH)/ubuntu/bluetooth/hciattach:system/bin/hciattach \
+    $(LOCAL_PATH)/ubuntu/bluetooth/bluetooth-touch-android.conf:system/halium/etc/init/bluetooth-touch-android.conf \
     $(LOCAL_PATH)/ubuntu/apparmor.d/abstractions/base:system/halium/etc/apparmor.d/abstractions/base \
     $(LOCAL_PATH)/ubuntu/apparmor.d/local/usr.bin.media-hub-server:system/halium/etc/apparmor.d/local/usr.bin.media-hub-server \
-    $(LOCAL_PATH)/ubuntu/timekeeper.conf:system/halium/etc/init/timekeeper.conf \
-    $(LOCAL_PATH)/ubuntu/bluetooth/bluetooth-touch-android.conf:system/halium/etc/init/bluetooth-touch-android.conf
+    $(LOCAL_PATH)/ubuntu/rsyslog.conf:system/halium/etc/rsyslog.conf \
+    $(LOCAL_PATH)/ubuntu/device-hacks.conf:system/halium/etc/init/device-hacks.conf
 
 
 #Ubuntu Touch: USB port handling
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/ubuntu/usb/setupusb:system/halium/usr/share/usbinit/setupusb \
+    $(LOCAL_PATH)/ubuntu/usb/setupusb:system/bin/setupusb \
     $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
