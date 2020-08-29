@@ -43,7 +43,7 @@ setup_mtp_adb() {
     write $ANDROID_USB/iManufacturer $MANUFACTURER
     write $ANDROID_USB/iProduct      $PRODUCT
     write $ANDROID_USB/iSerial       $SERIALNUMBER
-    write $ANDROID_USB/functions     mtp,adb
+    write $ANDROID_USB/functions     mtp,adb:mtp,acm,diag,adb
     write $ANDROID_USB/enable        1
     setprop sys.usb.state mtp,adb
 }
