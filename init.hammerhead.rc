@@ -164,7 +164,7 @@ on post-fs-data
     mkdir /dev/socket/mpdecision 2770 root system
 
     # save rtc time offsets
-    mkdir /data/time 777 system system
+    mkdir /data/system/time 0700 system system
 
     # Ecc_Handler qcril.db
     mkdir /data/misc/radio 0770 radio radio
@@ -174,9 +174,6 @@ on post-fs-data
 
     # Set the CPU Freq Sampling rates
     write /sys/module/msm_thermal/core_control/enabled 0
-    chmod 664 /sys/devices/system/cpu/cpu1/online
-    chmod 664 /sys/devices/system/cpu/cpu2/online
-    chmod 664 /sys/devices/system/cpu/cpu3/online
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
@@ -201,6 +198,9 @@ on post-fs-data
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 300000
     write /sys/module/msm_thermal/core_control/enabled 1
     chmod 220 /sys/devices/system/cpu/mfreq
+    chmod 664 /sys/devices/system/cpu/cpu1/online
+    chmod 664 /sys/devices/system/cpu/cpu2/online
+    chmod 664 /sys/devices/system/cpu/cpu3/online
     write /dev/cpuctl/apps/cpu.notify_on_migrate 1
 
 on charger
@@ -391,15 +391,4 @@ service time_daemon /system/bin/time_daemon
     user root
     group root
     disable
-    
-service minimedia /system/bin/minimediaservice
-    class main
-    user media
-    group audio camera
-    ioprio rt 4
-    
-service minisf /system/bin/minisfservice
-    setenv LD_PRELOAD /system/lib/libsurfaceflinger.so
-    class main
-    user system
-    group graphics
+
