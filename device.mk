@@ -104,7 +104,6 @@ PRODUCT_COPY_FILES += \
 # Ubuntu Touch
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/ofono.override:system/halium/etc/init/ofono.override \
-    $(LOCAL_PATH)/ubuntu/timekeeper.conf:system/halium/etc/init/timekeeper.conf \
     $(LOCAL_PATH)/ubuntu/70-hammerhead.rules:system/halium/lib/udev/rules.d/70-android.rules \
     $(LOCAL_PATH)/ubuntu/70-hammerhead.rules:system/halium/usr/lib/lxc-android-config/70-hammerhead.rules \
     $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/hammerhead.conf \

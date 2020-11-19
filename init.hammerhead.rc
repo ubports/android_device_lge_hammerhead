@@ -164,7 +164,7 @@ on post-fs-data
     mkdir /dev/socket/mpdecision 2770 root system
 
     # save rtc time offsets
-    mkdir /data/system/time 0700 system system
+    mkdir /data/time/ 0777 system system
 
     # Ecc_Handler qcril.db
     mkdir /data/misc/radio 0770 radio radio
