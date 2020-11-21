@@ -164,7 +164,8 @@ on post-fs-data
     mkdir /dev/socket/mpdecision 2770 root system
 
     # save rtc time offsets
-    mkdir /data/time/ 0777 system system
+    mkdir /data/time/ 0770 system system
+    mkdir /data/audio/ 0770 media audio
 
     # Ecc_Handler qcril.db
     mkdir /data/misc/radio 0770 radio radio
@@ -391,4 +392,3 @@ service time_daemon /system/bin/time_daemon
     user root
     group root
     disable
-
