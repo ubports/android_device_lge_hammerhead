@@ -1,1 +1,2 @@
 persist.sys.usb.config=mtp,adb
+persist.sys.isUsbOtgEnabled=1
