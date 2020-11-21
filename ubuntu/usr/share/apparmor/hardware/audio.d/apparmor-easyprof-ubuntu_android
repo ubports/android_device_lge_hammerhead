@@ -1,0 +1,2 @@
+/dev/msm_acdb rw,
+/dev/msm_rtac rw,
