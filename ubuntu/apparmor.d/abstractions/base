@@ -118,6 +118,8 @@
   # recent glibc uses /dev/full in preference to /dev/null for programs
   # that don't have open fds at exec()
   /dev/full                      rw,
+  /dev/tty                       rw,
+  /socket/property_service       rw,
 
   # Sometimes used to determine kernel/user interfaces to use
   @{PROC}/sys/kernel/version     r,
