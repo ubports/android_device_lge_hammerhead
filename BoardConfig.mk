@@ -133,8 +133,8 @@ TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS:= true
 
 # Halium Specific defining libs to 32 bit only
-DROIDMEDIA_32 := true
-HYBRIS_MEDIA_32_BIT_ONLY := true
+#DROIDMEDIA_32 := true
+#HYBRIS_MEDIA_32_BIT_ONLY := true
 
 # Hardware
 BOARD_USES_CYANOGEN_HARDWARE := true
