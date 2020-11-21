@@ -165,7 +165,6 @@ on post-fs-data
 
     # save rtc time offsets
     mkdir /data/time/ 0770 system system
-    mkdir /data/audio/ 0770 media audio
 
     # Ecc_Handler qcril.db
     mkdir /data/misc/radio 0770 radio radio
@@ -198,10 +197,10 @@ on post-fs-data
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 300000
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 300000
     write /sys/module/msm_thermal/core_control/enabled 1
-    chmod 220 /sys/devices/system/cpu/mfreq
     chmod 664 /sys/devices/system/cpu/cpu1/online
     chmod 664 /sys/devices/system/cpu/cpu2/online
     chmod 664 /sys/devices/system/cpu/cpu3/online
+    chmod 220 /sys/devices/system/cpu/mfreq
     write /dev/cpuctl/apps/cpu.notify_on_migrate 1
 
 on charger
@@ -392,3 +391,15 @@ service time_daemon /system/bin/time_daemon
     user root
     group root
     disable
+    
+service minimedia /system/bin/minimediaservice
+    class main
+    user media
+    group audio camera
+    ioprio rt 4
+
+service miniafservice /system/bin/miniafservice
+    class core
+    user root
+    group audio
+    disabled
