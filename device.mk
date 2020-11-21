@@ -105,13 +105,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/ofono.override:system/halium/etc/init/ofono.override \
     $(LOCAL_PATH)/ubuntu/70-hammerhead.rules:system/halium/lib/udev/rules.d/70-android.rules \
-    $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/hammerhead.conf \
     $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
     $(LOCAL_PATH)/ubuntu/config-default.xml:system/halium/usr/share/repowerd/device-configs/config-hammerhead.xml \
     $(LOCAL_PATH)/ubuntu/usr/share/apparmor/hardware/graphics.d/apparmor-easyprof-ubuntu_android:system/halium/usr/share/apparmor/hardware/graphics.d/apparmor-easyprof-ubuntu_android \
     $(LOCAL_PATH)/ubuntu/usr/share/apparmor/hardware/video.d/apparmor-easyprof-ubuntu_android:system/halium/usr/share/apparmor/hardware/video.d/apparmor-easyprof-ubuntu_android \
     $(LOCAL_PATH)/ubuntu/usr/share/apparmor/hardware/audio.d/apparmor-easyprof-ubuntu_android:system/halium/usr/share/apparmor/hardware/audio.d/apparmor-easyprof-ubuntu_android \
-    $(LOCAL_PATH)/ubuntu/bluetooth/hciattach:system/bin/hciattach \
     $(LOCAL_PATH)/ubuntu/touch.pa:system/halium/etc/pulse/touch.pa \
     $(LOCAL_PATH)/ubuntu/bluetooth/bluetooth-touch-android.conf:system/halium/etc/init/bluetooth-touch-android.conf \
     $(LOCAL_PATH)/ubuntu/apparmor.d/abstractions/base:system/halium/etc/apparmor.d/abstractions/base \
@@ -123,6 +121,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/usb/setupusb:system/bin/setupusb \
     $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf
+    
+# Device was launched with K
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.product.first_api_level=19
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ubuntu.widi.supported=1 \
@@ -138,16 +140,10 @@ DEVICE_PACKAGE_OVERLAYS := \
     
 PRODUCT_PACKAGES += \
     halium-boot \
-    libubuntu_application_api \
-    direct_ubuntu_application_sensors_c_api_for_hybris_test \
-    direct_ubuntu_application_sensors_for_hybris_test \
-    direct_ubuntu_application_gps_c_api_for_hybris_test \
-    libmedia_compat \
-    camera_service \
+    libmedia_compat_layer \
     minimediaservice \
     libaudioflingerglue \
     libminisf \
-    minisfservice \
     miniafservice
     
 MINIMEDIA_SENSORSERVER_DISABLE := 1
@@ -157,6 +153,8 @@ PRODUCT_PACKAGES += \
     charger_res_images
 
 PRODUCT_PACKAGES += \
+    brcm_patchram_plus \
+    hciattach \
     libwpa_client \
     hostapd \
     dhcpcd.conf \
@@ -221,10 +219,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.msm8974
 
-# Gello
-PRODUCT_PACKAGES += \
-    Gello
-
 # GPS configuration
 PRODUCT_COPY_FILES += \
     device/lge/hammerhead/gps.conf:system/etc/gps.conf
@@ -242,7 +236,8 @@ PRODUCT_PACKAGES += \
     gps.msm8974 \
     flp.msm8974 \
     liblbs_core \
-    flp.conf
+    flp.conf \
+    libxml2
 
 # NFC packages
 PRODUCT_PACKAGES += \
@@ -263,7 +258,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     e2fsck \
     bluetoothd
-
+    
 PRODUCT_PACKAGES += \
     bdAddrLoader
 
