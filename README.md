@@ -36,6 +36,7 @@ Halium 7.1
 - [X] Audio on Hanset/ Loudspeaker
 - [X] Camera Pictures
 - [ ] Camera Video Recording - Does not work
+- [X] Camera
 - [X] Video Decode
 - [X] Light/Proximity
 - [X] Notidication LEDS
@@ -43,3 +44,4 @@ Halium 7.1
 - [X] RNDIS
 - [X] GPS
 - [X] MPT
+- [X] CPU IO SCHED -Performance Fix
