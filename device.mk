@@ -107,9 +107,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/70-hammerhead.rules:system/halium/lib/udev/rules.d/70-android.rules \
     $(LOCAL_PATH)/ubuntu/display.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
     $(LOCAL_PATH)/ubuntu/config-default.xml:system/halium/usr/share/repowerd/device-configs/config-hammerhead.xml \
-    $(LOCAL_PATH)/ubuntu/usr/share/apparmor/hardware/graphics.d/apparmor-easyprof-ubuntu_android:system/halium/usr/share/apparmor/hardware/graphics.d/apparmor-easyprof-ubuntu_android \
-    $(LOCAL_PATH)/ubuntu/usr/share/apparmor/hardware/video.d/apparmor-easyprof-ubuntu_android:system/halium/usr/share/apparmor/hardware/video.d/apparmor-easyprof-ubuntu_android \
-    $(LOCAL_PATH)/ubuntu/usr/share/apparmor/hardware/audio.d/apparmor-easyprof-ubuntu_android:system/halium/usr/share/apparmor/hardware/audio.d/apparmor-easyprof-ubuntu_android \
     $(LOCAL_PATH)/ubuntu/touch.pa:system/halium/etc/pulse/touch.pa \
     $(LOCAL_PATH)/ubuntu/bluetooth/bluetooth-touch-android.conf:system/halium/etc/init/bluetooth-touch-android.conf \
     $(LOCAL_PATH)/ubuntu/apparmor.d/abstractions/base:system/halium/etc/apparmor.d/abstractions/base \
@@ -122,10 +119,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/usb/setupusb:system/bin/setupusb \
     $(LOCAL_PATH)/ubuntu/usb/mtp-state.conf:system/halium/etc/init/mtp-state.conf
     
-# Device was launched with K
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.product.first_api_level=19
-
 PRODUCT_PROPERTY_OVERRIDES += \
     ubuntu.widi.supported=1 \
     ro.build.vanilla.abi=1
@@ -238,6 +231,11 @@ PRODUCT_PACKAGES += \
     liblbs_core \
     flp.conf \
     libxml2
+
+# Extra packages we can compile from source
+PRODUCT_PACKAGES += \
+    libtinyxml \
+    libprotobuf-cpp-full
 
 # NFC packages
 PRODUCT_PACKAGES += \
